@@ -12,4 +12,4 @@
 <br><br>
 ## Бачення системи
 ER-діаграмма бази данних
-![Диаграма](https://github.com/mariiasirenko2/Fastest/blob/main/img/ER_diagramm_Fastest.png)
+![Диаграма](https://github.com/mariiasirenko2/Fastest/blob/master/img/ER_diagramm_Fastest.png)
