@@ -6,8 +6,9 @@
 
 <br><br>
 Дизайн додатку - [посидання на дизайн у Figma](https://www.figma.com/file/qmm2YXCDbmeLv3oH59SU7Q/Untitled?node-id=0%3A1) <br>
-Бєклог продукту - [посилання та Google Table](https://docs.google.com/spreadsheets/d/1UuI6Cx85vHR5UQqz2wBgwwStmLcmdR46wQpE9lVLe_0/edit?usp=sharing) <br>
-Бєклог першого спринта -[посилання та Google Table](https://docs.google.com/spreadsheets/d/1LliFfLlcia2bYayfSoojQYUXv9Tpz1fcZ5TrDVyhLJg/edit?usp=sharing)<br>
+Беклог продукту - [посилання та Google Table](https://docs.google.com/spreadsheets/d/1UuI6Cx85vHR5UQqz2wBgwwStmLcmdR46wQpE9lVLe_0/edit?usp=sharing) <br>
+Беклог першого спринта - [посилання та Google Table](https://docs.google.com/spreadsheets/d/1LliFfLlcia2bYayfSoojQYUXv9Tpz1fcZ5TrDVyhLJg/edit?usp=sharing)<br>
+Скрипт створення Бази Даних - [посилання та Google Диск](https://drive.google.com/file/d/1uK-W2XiGN-MXVPmWYgcTwCwHwt-3rQJI/view?usp=sharing)<br>
 
 <br><br>
 ## Бачення системи
