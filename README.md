@@ -26,3 +26,6 @@ ER-діаграмма бази данних
   <li>Найдовша електронна адреса містить 62 символи.</li>
  </ul>
  Саме такі значення оберемо для обмеження довжин символьних типів даних.
+ 
+ Use Case Diagram
+ ![Диаграма - Use Case](https://github.com/mariiasirenko2/Fastest/blob/master/img/Use%20Cave%20View.png)
