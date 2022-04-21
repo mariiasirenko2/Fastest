@@ -1,0 +1,58 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "map": [
+                {
+                    "source": "/home/masha/.gradle/caches/transforms-3/19075c4677e37e538c54d7f745fc8af4/transformed/appcompat-1.4.1/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,48",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "100,170,254,338,434,536,638,4173",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "165,249,333,429,531,633,727,4257"
+                    }
+                },
+                {
+                    "source": "/home/masha/.gradle/caches/transforms-3/e6a6b98a5bf4cf452a4bc3a3002b3bc1/transformed/material-1.5.0/res/values-night-v8/values-night-v8.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,49,50,51,52,53,54,55,56",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1519,1594,1705,1794,1895,2002,2109,2208,2311,2399,2523,2625,2727,2843,2945,3059,3187,3303,3425,3561,3681,3815,3935,4047,4262,4379,4503,4633,4755,4893,5027,5143",
+                        "endColumns": "74,110,88,100,106,106,98,102,87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,116,123,129,121,137,133,115,119",
+                        "endOffsets": "1589,1700,1789,1890,1997,2104,2203,2306,2394,2518,2620,2722,2838,2940,3054,3182,3298,3420,3556,3676,3810,3930,4042,4168,4374,4498,4628,4750,4888,5022,5138,5258"
+                    }
+                },
+                {
+                    "source": "/home/masha/Fastest/app/src/main/res/values-night/themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "100",
+                        "endLines": "16",
+                        "endColumns": "12",
+                        "endOffsets": "884"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "732",
+                        "endLines": "23",
+                        "endColumns": "12",
+                        "endOffsets": "1514"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+com/fastastapp/BuildConfig.java
+ com.fastastapp.BuildConfig
+com/fastastapp/MainActivity.java
+ com.fastastapp.MainActivity
+com/fastastapp/databinding/ActivityMainBinding.java
+ com.fastastapp.databinding.ActivityMainBinding
+com/fastastapp/databinding/ActivityLoginBinding.java
+ com.fastastapp.databinding.ActivityLoginBinding
+com/fastastapp/Login.java
+ com.fastastapp.Login

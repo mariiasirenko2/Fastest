@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".Login"
+    android:padding="20dp"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:transitionName="logo_image"
+        android:src="@drawable/big_logo_light"
+        android:contentDescription="@string/dark_logo_image" />
+
+
+    <TextView
+        android:id="@+id/slogan_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:textColor="@color/buttonBlue"
+        android:layout_margin="40dp"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/username"
+            android:hint="@string/email"
+            app:boxStrokeErrorColor="@color/attentionRed"
+            app:boxStrokeColor="@color/buttonBlue"
+            android:textColorHint="@color/buttonSemiLightBlue"
+            app:hintTextColor="@color/buttonSemiLightBlue"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/buttonBlue"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password"
+            android:hint="@string/password"
+            app:boxStrokeErrorColor="@color/attentionRed"
+            app:boxStrokeColor="@color/buttonBlue"
+            android:textColorHint="@color/buttonSemiLightBlue"
+            app:hintTextColor="@color/buttonSemiLightBlue"
+            android:layout_marginTop="24dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/buttonSemiLightBlue"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/buttonBlue"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="#00000000"
+            android:textColor="@color/buttonSemiLightBlue"
+            android:elevation="0dp"
+            android:text="@string/want_restore"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/buttonBlue"
+            android:text="@string/in" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#00000000"
+            android:textColor="@color/buttonSemiLightBlue"
+            android:elevation="0dp"
+            android:text="@string/propose_sign"
+            android:layout_margin="15dp"/>
+
+    </LinearLayout>
+</LinearLayout>

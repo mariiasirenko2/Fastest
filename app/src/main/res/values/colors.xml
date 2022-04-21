@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="buttonBlue">#4E69A8</color>
+    <color name="lightGrey">#FCFCFD</color>
+    <color name="basicText">#2D2C2C</color>
+    <color name="attentionRed">#D11818</color>
+    <color name="semiLightGrey">#C2C2CC</color>
+    <color name="middleGrey">#7C7F88</color>
+    <color name="buttonSemiLightBlue">#7B92C8</color>
+    <color name="buttonLightBlue">#ABBEEA</color>
+    <color name="bg">#C9D0E1</color>
 </resources>
