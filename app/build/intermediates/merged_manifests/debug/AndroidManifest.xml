@@ -20,6 +20,12 @@
         android:testOnly="true"
         android:theme="@style/Theme.FastastApp" >
         <activity
+            android:name="com.fastastapp.SignUp"
+            android:exported="false" />
+        <activity
+            android:name="com.fastastapp.HomePage"
+            android:exported="false" />
+        <activity
             android:name="com.fastastapp.Login"
             android:exported="false" />
         <activity

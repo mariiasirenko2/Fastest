@@ -2696,6 +2696,7 @@ id easeOut
 id east
 id edit_query
 id elastic
+id email
 id end
 id endToStart
 id enterAlways
@@ -2715,8 +2716,11 @@ id floating
 id forever
 id fragment_container_view_tag
 id frost
+id fullname
 id ghost_view
 id ghost_view_holder
+id go_login_b
+id go_to_sign_up
 id gone
 id graph
 id graph_wrap
@@ -2760,6 +2764,7 @@ id line3
 id linear
 id listMode
 id list_item
+id login
 id logoImage
 id masked
 id match_constraint
@@ -2861,6 +2866,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id registration_b
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3089,8 +3095,10 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_home_page
 layout activity_login
 layout activity_main
+layout activity_sing_up
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

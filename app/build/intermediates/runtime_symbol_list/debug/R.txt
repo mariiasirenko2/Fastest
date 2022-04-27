@@ -2695,6 +2695,7 @@ int id easeOut 0x7f0800aa
 int id east 0x7f0800ab
 int id edit_query 0x7f0800ac
 int id elastic 0x7f0800ad
+int id email 0x7f0801e2
 int id end 0x7f0800ae
 int id endToStart 0x7f0800af
 int id enterAlways 0x7f0800b0
@@ -2714,8 +2715,11 @@ int id floating 0x7f0800bd
 int id forever 0x7f0800be
 int id fragment_container_view_tag 0x7f0800bf
 int id frost 0x7f0800c0
+int id fullname 0x7f0801e3
 int id ghost_view 0x7f0800c1
 int id ghost_view_holder 0x7f0800c2
+int id go_login_b 0x7f0801e4
+int id go_to_sign_up 0x7f0801e5
 int id gone 0x7f0800c3
 int id graph 0x7f0800c4
 int id graph_wrap 0x7f0800c5
@@ -2759,6 +2763,7 @@ int id line3 0x7f0800ea
 int id linear 0x7f0800eb
 int id listMode 0x7f0800ec
 int id list_item 0x7f0800ed
+int id login 0x7f0801e6
 int id logoImage 0x7f0800ee
 int id masked 0x7f0800ef
 int id match_constraint 0x7f0800f0
@@ -2860,6 +2865,7 @@ int id progress_horizontal 0x7f08014f
 int id radio 0x7f080150
 int id ratio 0x7f080151
 int id rectangles 0x7f080152
+int id registration_b 0x7f0801e7
 int id reverseSawtooth 0x7f080153
 int id right 0x7f080154
 int id rightToLeft 0x7f080155
@@ -3088,8 +3094,10 @@ int layout abc_search_dropdown_item_icons_2line 0x7f0b0018
 int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
+int layout activity_home_page 0x7f0b0075
 int layout activity_login 0x7f0b001c
 int layout activity_main 0x7f0b001d
+int layout activity_sing_up 0x7f0b0076
 int layout custom_dialog 0x7f0b001e
 int layout design_bottom_navigation_item 0x7f0b001f
 int layout design_bottom_sheet_dialog 0x7f0b0020

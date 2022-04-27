@@ -4,6 +4,7 @@ package com.fastastapp.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +23,12 @@ public final class ActivityLoginBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final Button goToSignUp;
+
+  @NonNull
+  public final Button login;
+
+  @NonNull
   public final ImageView logoImage;
 
   @NonNull
@@ -33,10 +40,12 @@ public final class ActivityLoginBinding implements ViewBinding {
   @NonNull
   public final TextInputLayout username;
 
-  private ActivityLoginBinding(@NonNull LinearLayout rootView, @NonNull ImageView logoImage,
-      @NonNull TextInputLayout password, @NonNull TextView sloganName,
-      @NonNull TextInputLayout username) {
+  private ActivityLoginBinding(@NonNull LinearLayout rootView, @NonNull Button goToSignUp,
+      @NonNull Button login, @NonNull ImageView logoImage, @NonNull TextInputLayout password,
+      @NonNull TextView sloganName, @NonNull TextInputLayout username) {
     this.rootView = rootView;
+    this.goToSignUp = goToSignUp;
+    this.login = login;
     this.logoImage = logoImage;
     this.password = password;
     this.sloganName = sloganName;
@@ -70,6 +79,18 @@ public final class ActivityLoginBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.go_to_sign_up;
+      Button goToSignUp = ViewBindings.findChildViewById(rootView, id);
+      if (goToSignUp == null) {
+        break missingId;
+      }
+
+      id = R.id.login;
+      Button login = ViewBindings.findChildViewById(rootView, id);
+      if (login == null) {
+        break missingId;
+      }
+
       id = R.id.logoImage;
       ImageView logoImage = ViewBindings.findChildViewById(rootView, id);
       if (logoImage == null) {
@@ -94,8 +115,8 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityLoginBinding((LinearLayout) rootView, logoImage, password, sloganName,
-          username);
+      return new ActivityLoginBinding((LinearLayout) rootView, goToSignUp, login, logoImage,
+          password, sloganName, username);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

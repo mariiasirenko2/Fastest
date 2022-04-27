@@ -4,7 +4,15 @@
         "source": "/home/masha/Fastest/app/src/main/res/layout/activity_login.xml"
     },
     {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_home_page.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_home_page.xml"
+    },
+    {
         "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
         "source": "/home/masha/Fastest/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_sing_up.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_sing_up.xml"
     }
 ]
