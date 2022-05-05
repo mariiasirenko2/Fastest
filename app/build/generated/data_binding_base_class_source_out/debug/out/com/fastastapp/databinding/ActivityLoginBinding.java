@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.fastastapp.R;
-import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -23,33 +23,34 @@ public final class ActivityLoginBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final Button goToSignUp;
+  public final Button loginButton;
 
   @NonNull
-  public final Button login;
+  public final TextInputEditText loginPasswordInput;
+
+  @NonNull
+  public final TextInputEditText loginUsernameInput;
 
   @NonNull
   public final ImageView logoImage;
 
   @NonNull
-  public final TextInputLayout password;
+  public final Button redirectSignupButton;
 
   @NonNull
   public final TextView sloganName;
 
-  @NonNull
-  public final TextInputLayout username;
-
-  private ActivityLoginBinding(@NonNull LinearLayout rootView, @NonNull Button goToSignUp,
-      @NonNull Button login, @NonNull ImageView logoImage, @NonNull TextInputLayout password,
-      @NonNull TextView sloganName, @NonNull TextInputLayout username) {
+  private ActivityLoginBinding(@NonNull LinearLayout rootView, @NonNull Button loginButton,
+      @NonNull TextInputEditText loginPasswordInput, @NonNull TextInputEditText loginUsernameInput,
+      @NonNull ImageView logoImage, @NonNull Button redirectSignupButton,
+      @NonNull TextView sloganName) {
     this.rootView = rootView;
-    this.goToSignUp = goToSignUp;
-    this.login = login;
+    this.loginButton = loginButton;
+    this.loginPasswordInput = loginPasswordInput;
+    this.loginUsernameInput = loginUsernameInput;
     this.logoImage = logoImage;
-    this.password = password;
+    this.redirectSignupButton = redirectSignupButton;
     this.sloganName = sloganName;
-    this.username = username;
   }
 
   @Override
@@ -79,15 +80,21 @@ public final class ActivityLoginBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.go_to_sign_up;
-      Button goToSignUp = ViewBindings.findChildViewById(rootView, id);
-      if (goToSignUp == null) {
+      id = R.id.login_button;
+      Button loginButton = ViewBindings.findChildViewById(rootView, id);
+      if (loginButton == null) {
         break missingId;
       }
 
-      id = R.id.login;
-      Button login = ViewBindings.findChildViewById(rootView, id);
-      if (login == null) {
+      id = R.id.login_password_input;
+      TextInputEditText loginPasswordInput = ViewBindings.findChildViewById(rootView, id);
+      if (loginPasswordInput == null) {
+        break missingId;
+      }
+
+      id = R.id.login_username_input;
+      TextInputEditText loginUsernameInput = ViewBindings.findChildViewById(rootView, id);
+      if (loginUsernameInput == null) {
         break missingId;
       }
 
@@ -97,9 +104,9 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.password;
-      TextInputLayout password = ViewBindings.findChildViewById(rootView, id);
-      if (password == null) {
+      id = R.id.redirect_signup_button;
+      Button redirectSignupButton = ViewBindings.findChildViewById(rootView, id);
+      if (redirectSignupButton == null) {
         break missingId;
       }
 
@@ -109,14 +116,8 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.username;
-      TextInputLayout username = ViewBindings.findChildViewById(rootView, id);
-      if (username == null) {
-        break missingId;
-      }
-
-      return new ActivityLoginBinding((LinearLayout) rootView, goToSignUp, login, logoImage,
-          password, sloganName, username);
+      return new ActivityLoginBinding((LinearLayout) rootView, loginButton, loginPasswordInput,
+          loginUsernameInput, logoImage, redirectSignupButton, sloganName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

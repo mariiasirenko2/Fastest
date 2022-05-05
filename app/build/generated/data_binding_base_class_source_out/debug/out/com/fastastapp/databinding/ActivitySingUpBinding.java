@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.fastastapp.R;
-import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -22,33 +22,34 @@ public final class ActivitySingUpBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final TextInputLayout email;
-
-  @NonNull
-  public final TextInputLayout fullname;
-
-  @NonNull
-  public final Button goLoginB;
+  public final Button goLoginButton;
 
   @NonNull
   public final ImageView logoImage;
 
   @NonNull
-  public final TextInputLayout password;
+  public final Button registrationButton;
 
   @NonNull
-  public final Button registrationB;
+  public final TextInputEditText signupEmailInput;
 
-  private ActivitySingUpBinding(@NonNull LinearLayout rootView, @NonNull TextInputLayout email,
-      @NonNull TextInputLayout fullname, @NonNull Button goLoginB, @NonNull ImageView logoImage,
-      @NonNull TextInputLayout password, @NonNull Button registrationB) {
+  @NonNull
+  public final TextInputEditText signupPasswordInput;
+
+  @NonNull
+  public final TextInputEditText signupUsernameInput;
+
+  private ActivitySingUpBinding(@NonNull LinearLayout rootView, @NonNull Button goLoginButton,
+      @NonNull ImageView logoImage, @NonNull Button registrationButton,
+      @NonNull TextInputEditText signupEmailInput, @NonNull TextInputEditText signupPasswordInput,
+      @NonNull TextInputEditText signupUsernameInput) {
     this.rootView = rootView;
-    this.email = email;
-    this.fullname = fullname;
-    this.goLoginB = goLoginB;
+    this.goLoginButton = goLoginButton;
     this.logoImage = logoImage;
-    this.password = password;
-    this.registrationB = registrationB;
+    this.registrationButton = registrationButton;
+    this.signupEmailInput = signupEmailInput;
+    this.signupPasswordInput = signupPasswordInput;
+    this.signupUsernameInput = signupUsernameInput;
   }
 
   @Override
@@ -78,21 +79,9 @@ public final class ActivitySingUpBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.email;
-      TextInputLayout email = ViewBindings.findChildViewById(rootView, id);
-      if (email == null) {
-        break missingId;
-      }
-
-      id = R.id.fullname;
-      TextInputLayout fullname = ViewBindings.findChildViewById(rootView, id);
-      if (fullname == null) {
-        break missingId;
-      }
-
-      id = R.id.go_login_b;
-      Button goLoginB = ViewBindings.findChildViewById(rootView, id);
-      if (goLoginB == null) {
+      id = R.id.go_login_button;
+      Button goLoginButton = ViewBindings.findChildViewById(rootView, id);
+      if (goLoginButton == null) {
         break missingId;
       }
 
@@ -102,20 +91,32 @@ public final class ActivitySingUpBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.password;
-      TextInputLayout password = ViewBindings.findChildViewById(rootView, id);
-      if (password == null) {
+      id = R.id.registration_button;
+      Button registrationButton = ViewBindings.findChildViewById(rootView, id);
+      if (registrationButton == null) {
         break missingId;
       }
 
-      id = R.id.registration_b;
-      Button registrationB = ViewBindings.findChildViewById(rootView, id);
-      if (registrationB == null) {
+      id = R.id.signup_email_input;
+      TextInputEditText signupEmailInput = ViewBindings.findChildViewById(rootView, id);
+      if (signupEmailInput == null) {
         break missingId;
       }
 
-      return new ActivitySingUpBinding((LinearLayout) rootView, email, fullname, goLoginB,
-          logoImage, password, registrationB);
+      id = R.id.signup_password_input;
+      TextInputEditText signupPasswordInput = ViewBindings.findChildViewById(rootView, id);
+      if (signupPasswordInput == null) {
+        break missingId;
+      }
+
+      id = R.id.signup_username_input;
+      TextInputEditText signupUsernameInput = ViewBindings.findChildViewById(rootView, id);
+      if (signupUsernameInput == null) {
+        break missingId;
+      }
+
+      return new ActivitySingUpBinding((LinearLayout) rootView, goLoginButton, logoImage,
+          registrationButton, signupEmailInput, signupPasswordInput, signupUsernameInput);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

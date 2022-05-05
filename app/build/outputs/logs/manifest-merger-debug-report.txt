@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:1-32:12
-INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:1-32:12
-INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:1-32:12
-INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:1-32:12
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:5-38:12
+INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:5-38:12
+INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:5-38:12
+INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:5-38:12
 MERGED from [androidx.databinding:viewbinding:7.0.4] /home/masha/.gradle/caches/transforms-3/813345eb504f680a3545dd04c623c665/transformed/jetified-viewbinding-7.0.4/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.material:material:1.5.0] /home/masha/.gradle/caches/transforms-3/e6a6b98a5bf4cf452a4bc3a3002b3bc1/transformed/material-1.5.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /home/masha/.gradle/caches/transforms-3/1f79276959ca9fb7f15de4c6158306e1/transformed/constraintlayout-2.1.3/AndroidManifest.xml:2:1-11:12
@@ -47,25 +47,33 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] /home/masha/.gradle/cache
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/masha/.gradle/caches/transforms-3/30559646bdc9f3290097ba378eb99203/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /home/masha/.gradle/caches/transforms-3/b618f929228947d1fd03b4a852d85b00/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] /home/masha/.gradle/caches/transforms-3/b521f32a8ca2115704fce9eaa65230c1/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:1-32:12
-INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:1-32:12
-INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:5-38:12
+INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:5-38:12
+INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:5-38:12
 	package
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:3:5-29
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:3:9-33
 		INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml
 		INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:1-32:12
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:5-38:12
 		INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:1-32:12
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:5-38:12
 		INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:2:15-73
+uses-permission#android.permission.INTERNET
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:5:1-63
+	android:name
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:5:18-60
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:6:1-75
+	android:name
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:6:18-72
 application
-ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:5:5-30:19
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:9:1-36:15
 MERGED from [com.google.android.material:material:1.5.0] /home/masha/.gradle/caches/transforms-3/e6a6b98a5bf4cf452a4bc3a3002b3bc1/transformed/material-1.5.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.5.0] /home/masha/.gradle/caches/transforms-3/e6a6b98a5bf4cf452a4bc3a3002b3bc1/transformed/material-1.5.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] /home/masha/.gradle/caches/transforms-3/1f79276959ca9fb7f15de4c6158306e1/transformed/constraintlayout-2.1.3/AndroidManifest.xml:9:5-20
@@ -83,51 +91,53 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] /home/masha/.gradle/caches/
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.7.0] /home/masha/.gradle/caches/transforms-3/9339927e08badd09bc5459e4ba900d5f/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:14:5-31
 	android:label
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:8:9-41
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:12:5-37
 	android:roundIcon
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:9:9-54
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:13:5-50
 	android:icon
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:7:9-43
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:11:5-39
 	android:allowBackup
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:6:9-35
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:10:5-31
 	android:theme
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:11:9-48
-activity#com.fastastapp.SignUp
-ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:12:9-14:40
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:16:5-44
+	android:usesCleartextTraffic
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:15:5-40
+activity#com.fastastapp.HomePageActivity
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:17:5-19:36
 	android:exported
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:14:13-37
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:19:9-33
 	android:name
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:13:13-35
-activity#com.fastastapp.HomePage
-ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:15:9-17:40
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:18:9-41
+activity#com.fastastapp.SignUpActivity
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:20:5-22:36
 	android:exported
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:17:13-37
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:22:9-33
 	android:name
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:16:13-37
-activity#com.fastastapp.Login
-ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:18:9-20:40
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:21:9-39
+activity#com.fastastapp.LogInActivity
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:23:5-25:36
 	android:exported
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:20:13-37
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:25:9-33
 	android:name
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:19:13-34
-activity#com.fastastapp.MainActivity
-ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:21:9-29:20
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:24:9-38
+activity#com.fastastapp.SplashActivity
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:27:5-35:16
 	android:exported
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:23:13-36
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:29:9-32
 	android:name
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:22:13-41
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:28:9-39
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:24:13-28:29
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:30:9-34:25
 action#android.intent.action.MAIN
-ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:25:17-69
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:31:13-65
 	android:name
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:25:25-66
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:31:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:27:17-77
+ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:33:13-73
 	android:name
-		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:27:27-74
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:33:23-70
 uses-sdk
 INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/masha/Fastest/app/src/main/AndroidManifest.xml

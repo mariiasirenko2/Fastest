@@ -1,18 +1,30 @@
+com/fastastapp/model/User.java
+ com.fastastapp.model.User
 com/fastastapp/BuildConfig.java
  com.fastastapp.BuildConfig
-com/fastastapp/databinding/ActivitySingUpBinding.java
- com.fastastapp.databinding.ActivitySingUpBinding
-com/fastastapp/MainActivity.java
- com.fastastapp.MainActivity
-com/fastastapp/databinding/ActivityMainBinding.java
- com.fastastapp.databinding.ActivityMainBinding
+com/fastastapp/HomePageActivity.java
+ com.fastastapp.HomePageActivity
 com/fastastapp/databinding/ActivityHomePageBinding.java
  com.fastastapp.databinding.ActivityHomePageBinding
+com/fastastapp/retrofit/ServiceGenerator.java
+ com.fastastapp.retrofit.ServiceGenerator
+com/fastastapp/retrofit/RetrofitService.java
+ com.fastastapp.retrofit.RetrofitService
+com/fastastapp/retrofit/UserApi.java
+ com.fastastapp.retrofit.UserApi
+com/fastastapp/databinding/ActivitySplashBinding.java
+ com.fastastapp.databinding.ActivitySplashBinding
+com/fastastapp/retrofit/AuthenticationInterceptor.java
+ com.fastastapp.retrofit.AuthenticationInterceptor
 com/fastastapp/databinding/ActivityLoginBinding.java
  com.fastastapp.databinding.ActivityLoginBinding
-com/fastastapp/HomePage.java
- com.fastastapp.HomePage
-com/fastastapp/SignUp.java
- com.fastastapp.SignUp
-com/fastastapp/Login.java
- com.fastastapp.Login
+com/fastastapp/databinding/ActivitySingUpBinding.java
+ com.fastastapp.databinding.ActivitySingUpBinding
+com/fastastapp/LogInActivity.java
+ com.fastastapp.LogInActivity
+ com.fastastapp.LogInActivity$1
+com/fastastapp/SplashActivity.java
+ com.fastastapp.SplashActivity
+com/fastastapp/SignUpActivity.java
+ com.fastastapp.SignUpActivity
+ com.fastastapp.SignUpActivity$1

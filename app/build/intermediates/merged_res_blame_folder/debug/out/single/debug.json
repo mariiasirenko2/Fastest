@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/layout_activity_login.xml.flat",
-        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_login.xml"
-    },
-    {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "/home/masha/Fastest/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/layout_activity_login.xml.flat",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_login.xml"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable-v24_biggest.png.flat",
@@ -14,10 +14,6 @@
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable-v24_big_logo_light.png.flat",
         "source": "/home/masha/Fastest/app/src/main/res/drawable-v24/big_logo_light.png"
-    },
-    {
-        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable-v24_fastest_logo_light.png.flat",
-        "source": "/home/masha/Fastest/app/src/main/res/drawable-v24/fastest_logo_light.png"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -30,6 +26,10 @@
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "/home/masha/Fastest/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable-v24_ic_baseline_face_24.xml.flat",
+        "source": "/home/masha/Fastest/app/src/main/res/drawable-v24/ic_baseline_face_24.xml"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.webp.flat",
@@ -48,16 +48,24 @@
         "source": "/home/masha/Fastest/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
     },
     {
+        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable-v24_ic_logo_light.xml.flat",
+        "source": "/home/masha/Fastest/app/src/main/res/drawable-v24/ic_logo_light.xml"
+    },
+    {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/anim_bottom_animation.xml.flat",
         "source": "/home/masha/Fastest/app/src/main/res/anim/bottom_animation.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable-v24_ic_launcher_background.xml.flat",
+        "source": "/home/masha/Fastest/app/src/main/res/drawable-v24/ic_launcher_background.xml"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher.webp.flat",
         "source": "/home/masha/Fastest/app/src/main/res/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/layout_activity_main.xml.flat",
-        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_main.xml"
+        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/layout_activity_splash.xml.flat",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_splash.xml"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_round.webp.flat",
@@ -72,16 +80,8 @@
         "source": "/home/masha/Fastest/app/src/main/res/drawable-v24/background.png"
     },
     {
-        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable_ic_launcher_background.xml.flat",
-        "source": "/home/masha/Fastest/app/src/main/res/drawable/ic_launcher_background.xml"
-    },
-    {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "/home/masha/Fastest/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable-v24_big_logo.png.flat",
-        "source": "/home/masha/Fastest/app/src/main/res/drawable-v24/big_logo.png"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/layout_activity_home_page.xml.flat",

@@ -1,11 +1,19 @@
 [
     {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_splash.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_splash.xml"
+    },
+    {
         "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_login.xml",
         "source": "/home/masha/Fastest/app/src/main/res/layout/activity_login.xml"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_home_page.xml",
         "source": "/home/masha/Fastest/app/src/main/res/layout/activity_home_page.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_sign_up.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_sign_up.xml"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
