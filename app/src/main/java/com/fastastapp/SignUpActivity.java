@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fastastapp.model.User;
-import com.fastastapp.retrofit.RetrofitService;
+import com.fastastapp.retrofit.ServiceGenerator;
 import com.fastastapp.retrofit.UserApi;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -58,8 +58,8 @@ public class SignUpActivity extends AppCompatActivity {
 
         //call retrofit to connect to server
 
-        RetrofitService retrofitService = new RetrofitService();
-        UserApi userApi = retrofitService.getRetrofit().create(UserApi.class);
+        ServiceGenerator serviceGenerator = new ServiceGenerator();
+        UserApi userApi = serviceGenerator.createService(UserApi.class);
 
         //find registration button object
         regBtn = findViewById(R.id.registration_button);

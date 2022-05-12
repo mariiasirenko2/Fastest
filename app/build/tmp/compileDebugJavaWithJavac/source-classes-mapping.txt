@@ -1,30 +1,56 @@
 com/fastastapp/model/User.java
  com.fastastapp.model.User
+com/fastastapp/TestFragment.java
+ com.fastastapp.TestFragment
+ com.fastastapp.TestFragment$1
+com/fastastapp/databinding/ActivityAddNewTestBinding.java
+ com.fastastapp.databinding.ActivityAddNewTestBinding
 com/fastastapp/BuildConfig.java
  com.fastastapp.BuildConfig
-com/fastastapp/HomePageActivity.java
- com.fastastapp.HomePageActivity
+com/fastastapp/databinding/TestFrameBinding.java
+ com.fastastapp.databinding.TestFrameBinding
 com/fastastapp/databinding/ActivityHomePageBinding.java
  com.fastastapp.databinding.ActivityHomePageBinding
 com/fastastapp/retrofit/ServiceGenerator.java
  com.fastastapp.retrofit.ServiceGenerator
-com/fastastapp/retrofit/RetrofitService.java
- com.fastastapp.retrofit.RetrofitService
-com/fastastapp/retrofit/UserApi.java
- com.fastastapp.retrofit.UserApi
-com/fastastapp/databinding/ActivitySplashBinding.java
- com.fastastapp.databinding.ActivitySplashBinding
-com/fastastapp/retrofit/AuthenticationInterceptor.java
- com.fastastapp.retrofit.AuthenticationInterceptor
-com/fastastapp/databinding/ActivityLoginBinding.java
- com.fastastapp.databinding.ActivityLoginBinding
-com/fastastapp/databinding/ActivitySingUpBinding.java
- com.fastastapp.databinding.ActivitySingUpBinding
 com/fastastapp/LogInActivity.java
  com.fastastapp.LogInActivity
- com.fastastapp.LogInActivity$1
+com/fastastapp/retrofit/UserApi.java
+ com.fastastapp.retrofit.UserApi
+com/fastastapp/databinding/ActivityCameraBinding.java
+ com.fastastapp.databinding.ActivityCameraBinding
 com/fastastapp/SplashActivity.java
  com.fastastapp.SplashActivity
+com/fastastapp/retrofit/AuthenticationInterceptor.java
+ com.fastastapp.retrofit.AuthenticationInterceptor
+com/fastastapp/databinding/ActivitySplashBinding.java
+ com.fastastapp.databinding.ActivitySplashBinding
+com/fastastapp/AccountFragment.java
+ com.fastastapp.AccountFragment
+com/fastastapp/databinding/FragmentAccountBinding.java
+ com.fastastapp.databinding.FragmentAccountBinding
+com/fastastapp/AddNewTest.java
+ com.fastastapp.AddNewTest
+com/fastastapp/HomePageActivity.java
+ com.fastastapp.HomePageActivity
+com/fastastapp/databinding/ActivityTestDataBinding.java
+ com.fastastapp.databinding.ActivityTestDataBinding
+com/fastastapp/databinding/FragmentTestBinding.java
+ com.fastastapp.databinding.FragmentTestBinding
+com/fastastapp/CameraActivity.java
+ com.fastastapp.CameraActivity
+com/fastastapp/model/Test.java
+ com.fastastapp.model.Test
+com/fastastapp/databinding/ActivityLoginBinding.java
+ com.fastastapp.databinding.ActivityLoginBinding
+com/fastastapp/MyAdapter.java
+ com.fastastapp.MyAdapter
+ com.fastastapp.MyAdapter$1
+ com.fastastapp.MyAdapter$PersonViewHolder
+com/fastastapp/TestDataActivity.java
+ com.fastastapp.TestDataActivity
+com/fastastapp/databinding/ActivitySingUpBinding.java
+ com.fastastapp.databinding.ActivitySingUpBinding
 com/fastastapp/SignUpActivity.java
  com.fastastapp.SignUpActivity
  com.fastastapp.SignUpActivity$1

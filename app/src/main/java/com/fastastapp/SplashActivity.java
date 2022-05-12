@@ -1,5 +1,6 @@
 package com.fastastapp;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +14,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+@SuppressLint("CustomSplashScreen")
+public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_SCREEN = 3000;
 
@@ -24,25 +26,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //delete Top Bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash);
 
-        image = findViewById(R.id.imageView);
-        slogan = findViewById(R.id.textView2);
+        //find logo image and slogan
+        image = findViewById(R.id.logo_wight_image);
+        slogan = findViewById(R.id.slogan_text);
 
-
+        //init animation
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
+        //make animation on logo image and slogan
         image.setAnimation(topAnim);
         slogan.setAnimation(bottomAnim);
 
+        //make animation on switching activities
         new Handler().postDelayed(() -> {
 
-            Intent intent=new Intent(MainActivity.this,Login.class);
+            Intent intent=new Intent(SplashActivity.this,LogInActivity.class);
 
-            ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(MainActivity.this,
-                    new Pair<>(image, "logo_image"));
+            ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this,new Pair<>(image, "logo_image"));
             startActivity(intent,options.toBundle());
         },SPLASH_SCREEN);
 

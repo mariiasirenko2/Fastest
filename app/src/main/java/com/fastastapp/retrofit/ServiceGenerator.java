@@ -3,6 +3,8 @@ package com.fastastapp.retrofit;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
+
 import okhttp3.Credentials;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -10,14 +12,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-    private static final String BASE_URL = " ";//http://your_IP:tomcat_port  ex: http://111.111.11.11:8080
+    private static final String BASE_URL = "http://192.168.88.182:8080";//http://your_IP:tomcat_port  ex: http://111.111.11.11:8080
 
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create());
+                    .addConverterFactory(GsonConverterFactory.create(new Gson()));
 
     private static Retrofit retrofit = builder.build();
 

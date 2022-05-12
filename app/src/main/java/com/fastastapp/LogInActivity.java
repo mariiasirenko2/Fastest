@@ -10,13 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fastastapp.model.User;
-import com.fastastapp.retrofit.RetrofitService;
 import com.fastastapp.retrofit.ServiceGenerator;
 import com.fastastapp.retrofit.UserApi;
 import com.google.android.material.textfield.TextInputEditText;
 
 
-import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,9 +64,12 @@ public class LogInActivity extends AppCompatActivity  {
             String email = String.valueOf(regEmail.getText());
             String pass = String.valueOf(regPassword.getText());
 
+//////////////////////////
+            Intent intent = new Intent(LogInActivity.this, HomePageActivity.class);
+            startActivity(intent);
 
             //generate an authHeader
-            UserApi loginService =
+        /*    UserApi loginService =
                     ServiceGenerator.createService(UserApi.class, email, pass);
 
             Call<User> call = loginService.logIn();
@@ -93,7 +94,7 @@ public class LogInActivity extends AppCompatActivity  {
                     Logger.getLogger(SignUpActivity.class.getName()).log(Level.SEVERE, "Error occurred");
 
                 }
-            });
+            });*/
 
         });
     }
