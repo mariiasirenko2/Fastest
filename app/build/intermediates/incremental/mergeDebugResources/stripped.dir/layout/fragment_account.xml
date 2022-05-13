@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".AccountFragment">
+
+   <RelativeLayout
+       android:id="@+id/parentRelative"
+       android:layout_width="match_parent"
+       android:layout_height="150dp"
+       android:padding="20dp"
+       android:background="@color/buttonSemiLightBlue">
+
+       <ImageView
+           android:id="@+id/profile_image"
+           android:layout_width="100dp"
+           android:layout_height="100dp"
+           android:src="@drawable/test_photo_default"
+           android:layout_centerVertical="true"/>
+       <TextView
+           android:id="@+id/profile_name"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Mariia Sirenko"
+           android:textSize="20sp"
+           android:textStyle="bold"
+           android:layout_toRightOf="@id/profile_image"
+           android:layout_centerVertical="true"
+           android:layout_marginLeft="20dp"
+           />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="test@gmail.com"
+           android:layout_toRightOf="@id/profile_image"
+           android:layout_below="@id/profile_name"
+           android:layout_centerVertical="true"
+           android:layout_marginLeft="20dp"
+           />
+
+   </RelativeLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="160dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/lightGrey"
+        android:padding="10dp">
+
+        <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textColor="@color/buttonBlue"
+            android:layout_marginTop="5dp"
+    android:text="Внимание:"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:text=" У вас осталось всего 5 тестов и 88 фото-сканирований"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Оформите подписку"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Настройки:"
+        android:layout_marginTop="270dp"
+        android:layout_marginLeft="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+</FrameLayout>
