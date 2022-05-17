@@ -64,6 +64,10 @@
         "source": "/home/masha/Fastest/app/src/main/res/anim/bottom_animation.xml"
     },
     {
+        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/layout_variant_card.xml.flat",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/variant_card.xml"
+    },
+    {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/layout_activity_camera.xml.flat",
         "source": "/home/masha/Fastest/app/src/main/res/layout/activity_camera.xml"
     },
@@ -110,6 +114,10 @@
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/anim_top_animation.xml.flat",
         "source": "/home/masha/Fastest/app/src/main/res/anim/top_animation.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable_ic_baseline_arrow_upward_24.xml.flat",
+        "source": "/home/masha/Fastest/app/src/main/res/drawable/ic_baseline_arrow_upward_24.xml"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_round.webp.flat",

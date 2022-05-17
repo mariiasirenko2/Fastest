@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context=".AccountFragment">
+    tools:context=".fragment.AccountFragment">
 
    <RelativeLayout
        android:id="@+id/parentRelative"
@@ -19,26 +19,27 @@
            android:layout_height="100dp"
            android:src="@drawable/test_photo_default"
            android:layout_centerVertical="true"/>
+
        <TextView
            android:id="@+id/profile_name"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="Mariia Sirenko"
-           android:textSize="20sp"
-           android:textStyle="bold"
-           android:layout_toRightOf="@id/profile_image"
            android:layout_centerVertical="true"
            android:layout_marginLeft="20dp"
-           />
+           android:layout_toRightOf="@id/profile_image"
+           android:text="Mariia Sirenko"
+           android:textSize="20sp"
+           android:textStyle="bold" />
+
        <TextView
+           android:id="@+id/profile_email"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="test@gmail.com"
-           android:layout_toRightOf="@id/profile_image"
            android:layout_below="@id/profile_name"
            android:layout_centerVertical="true"
            android:layout_marginLeft="20dp"
-           />
+           android:layout_toRightOf="@id/profile_image"
+           android:text="test@gmail.com" />
 
    </RelativeLayout>
 
@@ -65,7 +66,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:textColor="@color/black"
-            android:text=" У вас осталось всего 5 тестов и 88 фото-сканирований"
+            android:text=" У вас осталось всего 0 тестов и 0 фото-сканирований"
         />
 
         <TextView

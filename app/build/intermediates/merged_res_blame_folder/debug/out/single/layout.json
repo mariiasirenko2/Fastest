@@ -20,6 +20,10 @@
         "source": "/home/masha/Fastest/app/src/main/res/layout/fragment_test.xml"
     },
     {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/variant_card.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/variant_card.xml"
+    },
+    {
         "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_add_new_test.xml",
         "source": "/home/masha/Fastest/app/src/main/res/layout/activity_add_new_test.xml"
     },

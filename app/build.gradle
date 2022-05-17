@@ -47,10 +47,15 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.7.0-alpha01'
-    implementation "androidx.camera:camera-camera2:1.1.0-rc01"
-    implementation "androidx.camera:camera-lifecycle:1.1.0-rc01"
-    implementation "androidx.camera:camera-view:1.1.0-rc01"
-    implementation "androidx.camera:camera-core:1.1.0-rc01"
+
+
+    def cameraxVersion = "1.1.0-alpha05"
+    implementation "androidx.camera:camera-core:${cameraxVersion}"
+    implementation "androidx.camera:camera-camera2:${cameraxVersion}"
+    implementation "androidx.camera:camera-lifecycle:${cameraxVersion}"
+
+    // CameraX View class
+    implementation 'androidx.camera:camera-view:1.0.0-alpha25'
 
     // https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit
     implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'

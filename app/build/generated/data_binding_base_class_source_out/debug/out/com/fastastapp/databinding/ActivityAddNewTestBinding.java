@@ -4,25 +4,84 @@ package com.fastastapp.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.appcompat.widget.Toolbar;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.fastastapp.R;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
+import java.lang.String;
 
 public final class ActivityAddNewTestBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final LinearLayout rootView;
 
-  private ActivityAddNewTestBinding(@NonNull ConstraintLayout rootView) {
+  @NonNull
+  public final AppBarLayout appBarLayout;
+
+  @NonNull
+  public final Button attachQuestions;
+
+  @NonNull
+  public final Button attachStudents;
+
+  @NonNull
+  public final TextView fileName;
+
+  @NonNull
+  public final TextView fileNameQuestions;
+
+  @NonNull
+  public final TextView fileNameStudents;
+
+  @NonNull
+  public final Button generateTest;
+
+  @NonNull
+  public final ImageView iconFile;
+
+  @NonNull
+  public final TextInputEditText inputTestName;
+
+  @NonNull
+  public final RelativeLayout parentRelative;
+
+  @NonNull
+  public final Toolbar toolbar;
+
+  private ActivityAddNewTestBinding(@NonNull LinearLayout rootView,
+      @NonNull AppBarLayout appBarLayout, @NonNull Button attachQuestions,
+      @NonNull Button attachStudents, @NonNull TextView fileName,
+      @NonNull TextView fileNameQuestions, @NonNull TextView fileNameStudents,
+      @NonNull Button generateTest, @NonNull ImageView iconFile,
+      @NonNull TextInputEditText inputTestName, @NonNull RelativeLayout parentRelative,
+      @NonNull Toolbar toolbar) {
     this.rootView = rootView;
+    this.appBarLayout = appBarLayout;
+    this.attachQuestions = attachQuestions;
+    this.attachStudents = attachStudents;
+    this.fileName = fileName;
+    this.fileNameQuestions = fileNameQuestions;
+    this.fileNameStudents = fileNameStudents;
+    this.generateTest = generateTest;
+    this.iconFile = iconFile;
+    this.inputTestName = inputTestName;
+    this.parentRelative = parentRelative;
+    this.toolbar = toolbar;
   }
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -43,10 +102,81 @@ public final class ActivityAddNewTestBinding implements ViewBinding {
 
   @NonNull
   public static ActivityAddNewTestBinding bind(@NonNull View rootView) {
-    if (rootView == null) {
-      throw new NullPointerException("rootView");
-    }
+    // The body of this method is generated in a way you would not otherwise write.
+    // This is done to optimize the compiled bytecode for size and performance.
+    int id;
+    missingId: {
+      id = R.id.app_bar_layout;
+      AppBarLayout appBarLayout = ViewBindings.findChildViewById(rootView, id);
+      if (appBarLayout == null) {
+        break missingId;
+      }
 
-    return new ActivityAddNewTestBinding((ConstraintLayout) rootView);
+      id = R.id.attach_questions;
+      Button attachQuestions = ViewBindings.findChildViewById(rootView, id);
+      if (attachQuestions == null) {
+        break missingId;
+      }
+
+      id = R.id.attach_students;
+      Button attachStudents = ViewBindings.findChildViewById(rootView, id);
+      if (attachStudents == null) {
+        break missingId;
+      }
+
+      id = R.id.file_name;
+      TextView fileName = ViewBindings.findChildViewById(rootView, id);
+      if (fileName == null) {
+        break missingId;
+      }
+
+      id = R.id.file_name_questions;
+      TextView fileNameQuestions = ViewBindings.findChildViewById(rootView, id);
+      if (fileNameQuestions == null) {
+        break missingId;
+      }
+
+      id = R.id.file_name_students;
+      TextView fileNameStudents = ViewBindings.findChildViewById(rootView, id);
+      if (fileNameStudents == null) {
+        break missingId;
+      }
+
+      id = R.id.generateTest;
+      Button generateTest = ViewBindings.findChildViewById(rootView, id);
+      if (generateTest == null) {
+        break missingId;
+      }
+
+      id = R.id.icon_file;
+      ImageView iconFile = ViewBindings.findChildViewById(rootView, id);
+      if (iconFile == null) {
+        break missingId;
+      }
+
+      id = R.id.input_test_name;
+      TextInputEditText inputTestName = ViewBindings.findChildViewById(rootView, id);
+      if (inputTestName == null) {
+        break missingId;
+      }
+
+      id = R.id.parentRelative;
+      RelativeLayout parentRelative = ViewBindings.findChildViewById(rootView, id);
+      if (parentRelative == null) {
+        break missingId;
+      }
+
+      id = R.id.toolbar;
+      Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+
+      return new ActivityAddNewTestBinding((LinearLayout) rootView, appBarLayout, attachQuestions,
+          attachStudents, fileName, fileNameQuestions, fileNameStudents, generateTest, iconFile,
+          inputTestName, parentRelative, toolbar);
+    }
+    String missingId = rootView.getResources().getResourceName(id);
+    throw new NullPointerException("Missing required view with ID: ".concat(missingId));
   }
 }

@@ -1657,6 +1657,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="androidx_camera_default_config_provider" translatable="false"/>
     <string name="androidx_startup" translatable="false">androidx.startup</string>
     <string name="app_name">Fastest</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
@@ -9245,6 +9246,26 @@
         <!-- Whether to automatically stack the buttons when there is not
              enough space to lay them out side-by-side. -->
         <attr format="boolean" name="allowStacking"/>
+    </declare-styleable>
+    <declare-styleable name="CameraView">
+        <attr name="scaleType"/>
+        <attr format="enum" name="lensFacing">
+            <enum name="none" value="0"/>
+            <enum name="front" value="1"/>
+            <enum name="back" value="2"/>
+        </attr>
+        <attr format="enum" name="captureMode">
+            <enum name="image" value="0"/>
+            <enum name="video" value="1"/>
+            <enum name="mixed" value="2"/>
+        </attr>
+        <attr format="enum" name="flash">
+            <enum name="auto" value="1"/>
+            <enum name="on" value="2"/>
+            <enum name="off" value="4"/>
+        </attr>
+
+        <attr format="boolean" name="pinchToZoomEnabled"/>
     </declare-styleable>
     <declare-styleable name="Capability">
         <!-- Resource reference to the string array of query patterns for a custom capability. -->

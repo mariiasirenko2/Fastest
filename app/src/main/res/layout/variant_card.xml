@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:padding="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/lightGrey"
+        app:cardUseCompatPadding="true">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/lightGrey"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/variant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Variant"
+                android:textSize="15dp"
+                android:textColor="@color/buttonBlue"
+                android:layout_marginLeft="15dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/mark_text"
+                android:layout_marginRight="15dp"
+                android:text="Оценка"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/buttonBlue"
+                />
+
+            <TextView
+                android:id="@+id/mark_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text=" 0 / 10"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/buttonBlue"
+                />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

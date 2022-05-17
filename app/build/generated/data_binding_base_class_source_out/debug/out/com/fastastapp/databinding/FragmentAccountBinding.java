@@ -25,16 +25,20 @@ public final class FragmentAccountBinding implements ViewBinding {
   public final RelativeLayout parentRelative;
 
   @NonNull
+  public final TextView profileEmail;
+
+  @NonNull
   public final ImageView profileImage;
 
   @NonNull
   public final TextView profileName;
 
   private FragmentAccountBinding(@NonNull FrameLayout rootView,
-      @NonNull RelativeLayout parentRelative, @NonNull ImageView profileImage,
-      @NonNull TextView profileName) {
+      @NonNull RelativeLayout parentRelative, @NonNull TextView profileEmail,
+      @NonNull ImageView profileImage, @NonNull TextView profileName) {
     this.rootView = rootView;
     this.parentRelative = parentRelative;
+    this.profileEmail = profileEmail;
     this.profileImage = profileImage;
     this.profileName = profileName;
   }
@@ -72,6 +76,12 @@ public final class FragmentAccountBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.profile_email;
+      TextView profileEmail = ViewBindings.findChildViewById(rootView, id);
+      if (profileEmail == null) {
+        break missingId;
+      }
+
       id = R.id.profile_image;
       ImageView profileImage = ViewBindings.findChildViewById(rootView, id);
       if (profileImage == null) {
@@ -84,8 +94,8 @@ public final class FragmentAccountBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAccountBinding((FrameLayout) rootView, parentRelative, profileImage,
-          profileName);
+      return new FragmentAccountBinding((FrameLayout) rootView, parentRelative, profileEmail,
+          profileImage, profileName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

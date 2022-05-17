@@ -69,7 +69,7 @@ public class LogInActivity extends AppCompatActivity  {
             startActivity(intent);
 
             //generate an authHeader
-        /*    UserApi loginService =
+            UserApi loginService =
                     ServiceGenerator.createService(UserApi.class, email, pass);
 
             Call<User> call = loginService.logIn();
@@ -78,9 +78,13 @@ public class LogInActivity extends AppCompatActivity  {
                 public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
                     if(response.isSuccessful()){
                         Toast.makeText(LogInActivity.this, "Successful Login", Toast.LENGTH_SHORT).show();
-
+                        User tmp = response.body();
                         //redirect to Welcome Page
                         Intent intent = new Intent(LogInActivity.this, HomePageActivity.class);
+                        intent.putExtra("userId",tmp.getId());
+                        intent.putExtra("username",tmp.getUsername());
+                        intent.putExtra("email",tmp.getEmail());
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }
                     else{
@@ -94,7 +98,7 @@ public class LogInActivity extends AppCompatActivity  {
                     Logger.getLogger(SignUpActivity.class.getName()).log(Level.SEVERE, "Error occurred");
 
                 }
-            });*/
+            });
 
         });
     }

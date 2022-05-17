@@ -210,6 +210,7 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
+attr captureMode
 attr cardBackgroundColor
 attr cardCornerRadius
 attr cardElevation
@@ -500,6 +501,7 @@ attr fastScrollVerticalTrackDrawable
 attr finishPrimaryWithSecondary
 attr finishSecondaryWithPrimary
 attr firstBaselineToTopHeight
+attr flash
 attr floatingActionButtonLargePrimaryStyle
 attr floatingActionButtonLargeSecondaryStyle
 attr floatingActionButtonLargeStyle
@@ -711,6 +713,7 @@ attr layout_scrollEffect
 attr layout_scrollFlags
 attr layout_scrollInterpolator
 attr layout_wrapBehaviorInParent
+attr lensFacing
 attr liftOnScroll
 attr liftOnScrollTargetViewId
 attr limitBoundsTo
@@ -894,6 +897,7 @@ attr percentWidth
 attr percentX
 attr percentY
 attr perpendicularPath_percent
+attr pinchToZoomEnabled
 attr pivotAnchor
 attr placeholderActivityName
 attr placeholderText
@@ -2551,6 +2555,7 @@ drawable ic_account
 drawable ic_android_black_24dp
 drawable ic_baseline_add_24
 drawable ic_baseline_arrow_back_24
+drawable ic_baseline_arrow_upward_24
 drawable ic_baseline_attach_file_24
 drawable ic_baseline_back_hand_24
 drawable ic_baseline_camera_enhance_24
@@ -2705,10 +2710,14 @@ id app_bar_layout
 id arc
 id asConfigured
 id async
+id attach_questions
+id attach_students
 id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id bCapture
+id back
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -2787,6 +2796,8 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id download_results
+id download_tasks
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -2816,6 +2827,9 @@ id expand_activities_button
 id expanded_menu
 id fab
 id fade
+id file_name
+id file_name_questions
+id file_name_students
 id fill
 id fillCenter
 id fillEnd
@@ -2834,8 +2848,10 @@ id floating
 id forever
 id fragment_container_view_tag
 id frameLayout
+id front
 id frost
 id fullscreen_header
+id generateTest
 id ghost_view
 id ghost_view_holder
 id go_login_button
@@ -2853,6 +2869,7 @@ id homeAsUp
 id honorRequest
 id horizontal_only
 id icon
+id icon_file
 id icon_group
 id ifRoom
 id ignore
@@ -2862,6 +2879,7 @@ id img
 id immediateStop
 id included
 id info
+id input_test_name
 id invisible
 id inward
 id italic
@@ -2880,6 +2898,7 @@ id legacy
 id line1
 id line3
 id linear
+id linearLayout
 id listMode
 id list_item
 id locale
@@ -2889,6 +2908,7 @@ id login_username_input
 id logoImage
 id logo_wight_image
 id ltr
+id mark_text
 id masked
 id match_constraint
 id match_parent
@@ -2916,6 +2936,7 @@ id media_actions
 id message
 id middle
 id mini
+id mixed
 id mobile_navigation
 id month_grid
 id month_navigation_bar
@@ -2994,14 +3015,19 @@ id photo
 id pin
 id position
 id postLayout
+id previewView
+id profile_email
 id profile_image
 id profile_name
 id progress_circular
 id progress_horizontal
+id quantity_task
+id quantity_variants
 id radio
 id ratio
 id rectangles
 id recview
+id recview_variant
 id redirect_signup_button
 id registration_button
 id reverseSawtooth
@@ -3100,6 +3126,7 @@ id tag_window_insets_animation_callback
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
 id test_name
+id test_photo
 id test_radiobutton_android_button_tint
 id test_radiobutton_app_button_tint
 id text
@@ -3141,7 +3168,9 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id variant_name
 id vertical_only
+id video
 id view_offset_helper
 id view_transition
 id view_tree_lifecycle_owner
@@ -3369,6 +3398,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+layout variant_card
 menu bottom_nav_menu
 menu example_menu
 menu example_menu2
@@ -3405,6 +3435,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string action_sign_in
 string action_sign_in_short
+string androidx_camera_default_config_provider
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -4615,8 +4646,9 @@ styleable Badge backgroundColor badgeGravity badgeRadius badgeTextColor badgeWid
 styleable BaseProgressIndicator android_indeterminate hideAnimationBehavior indicatorColor minHideDelay showAnimationBehavior showDelay trackColor trackCornerRadius trackThickness
 styleable BottomAppBar backgroundTint elevation fabAlignmentMode fabAnimationMode fabCradleMargin fabCradleRoundedCornerRadius fabCradleVerticalOffset hideOnScroll navigationIconTint paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets
 styleable BottomNavigationView android_minHeight itemHorizontalTranslationEnabled
-styleable BottomSheetBehavior_Layout android_maxWidth android_maxHeight android_elevation backgroundTint behavior_draggable behavior_expandedOffset behavior_fitToContents behavior_halfExpandedRatio behavior_hideable behavior_peekHeight behavior_saveFlags behavior_skipCollapsed gestureInsetBottomIgnored paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets paddingTopSystemWindowInsets shapeAppearance shapeAppearanceOverlay marginLeftSystemWindowInsets marginRightSystemWindowInsets marginTopSystemWindowInsets
+styleable BottomSheetBehavior_Layout android_maxWidth android_maxHeight android_elevation backgroundTint behavior_draggable behavior_expandedOffset behavior_fitToContents behavior_halfExpandedRatio behavior_hideable behavior_peekHeight behavior_saveFlags behavior_skipCollapsed gestureInsetBottomIgnored marginLeftSystemWindowInsets marginRightSystemWindowInsets marginTopSystemWindowInsets paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets paddingTopSystemWindowInsets shapeAppearance shapeAppearanceOverlay
 styleable ButtonBarLayout allowStacking
+styleable CameraView scaleType captureMode flash lensFacing pinchToZoomEnabled
 styleable Capability queryPatterns shortcutMatchRequired
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Carousel carousel_backwardTransition carousel_emptyViewsBehavior carousel_firstView carousel_forwardTransition carousel_infinite carousel_nextState carousel_previousState carousel_touchUpMode carousel_touchUp_dampeningFactor carousel_touchUp_velocityThreshold
@@ -4656,7 +4688,7 @@ styleable FragmentNavigator android_name
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
 styleable ImageFilterView altSrc blendSrc brightness contrast crossfade imagePanX imagePanY imageRotate imageZoom overlay round roundPercent saturation warmth
-styleable Insets paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets paddingTopSystemWindowInsets marginLeftSystemWindowInsets marginRightSystemWindowInsets marginTopSystemWindowInsets
+styleable Insets marginLeftSystemWindowInsets marginRightSystemWindowInsets marginTopSystemWindowInsets paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets paddingTopSystemWindowInsets
 styleable KeyAttribute android_alpha android_transformPivotX android_transformPivotY android_translationX android_translationY android_scaleX android_scaleY android_rotation android_rotationX android_rotationY android_translationZ android_elevation curveFit framePosition motionProgress motionTarget transformPivotTarget transitionEasing transitionPathRotate
 styleable KeyCycle android_alpha android_translationX android_translationY android_scaleX android_scaleY android_rotation android_rotationX android_rotationY android_translationZ android_elevation curveFit framePosition motionProgress motionTarget transitionEasing transitionPathRotate waveOffset wavePeriod wavePhase waveShape waveVariesBy
 styleable KeyFrame
@@ -4677,15 +4709,15 @@ styleable MaterialButton android_background android_insetLeft android_insetRight
 styleable MaterialButtonToggleGroup checkedButton selectionRequired singleSelection
 styleable MaterialCalendar android_windowFullscreen dayInvalidStyle daySelectedStyle dayStyle dayTodayStyle nestedScrollable rangeFillColor yearSelectedStyle yearStyle yearTodayStyle
 styleable MaterialCalendarItem android_insetLeft android_insetRight android_insetTop android_insetBottom itemFillColor itemShapeAppearance itemShapeAppearanceOverlay itemStrokeColor itemStrokeWidth itemTextColor
-styleable MaterialCardView android_checkable cardForegroundColor checkedIcon checkedIconMargin checkedIconSize checkedIconTint rippleColor shapeAppearance shapeAppearanceOverlay state_dragged strokeColor strokeWidth checkedIconGravity
-styleable MaterialCheckBox buttonTint useMaterialThemeColors centerIfNoTextEnabled
+styleable MaterialCardView android_checkable cardForegroundColor checkedIcon checkedIconGravity checkedIconMargin checkedIconSize checkedIconTint rippleColor shapeAppearance shapeAppearanceOverlay state_dragged strokeColor strokeWidth
+styleable MaterialCheckBox buttonTint centerIfNoTextEnabled useMaterialThemeColors
 styleable MaterialDivider dividerColor dividerInsetEnd dividerInsetStart dividerThickness lastItemDecorated
 styleable MaterialRadioButton buttonTint useMaterialThemeColors
 styleable MaterialShape shapeAppearance shapeAppearanceOverlay
 styleable MaterialTextAppearance android_letterSpacing android_lineHeight lineHeight
 styleable MaterialTextView android_textAppearance android_lineHeight lineHeight
 styleable MaterialTimePicker clockIcon keyboardIcon
-styleable MaterialToolbar navigationIconTint subtitleCentered titleCentered logoAdjustViewBounds logoScaleType
+styleable MaterialToolbar logoAdjustViewBounds logoScaleType navigationIconTint subtitleCentered titleCentered
 styleable MenuGroup android_enabled android_id android_visible android_menuCategory android_orderInCategory android_checkableBehavior
 styleable MenuItem android_icon android_enabled android_id android_checked android_visible android_menuCategory android_orderInCategory android_title android_titleCondensed android_alphabeticShortcut android_numericShortcut android_checkable android_onClick actionLayout actionProviderClass actionViewClass alphabeticModifiers contentDescription iconTint iconTintMode numericModifiers showAsAction tooltipText
 styleable MenuView android_windowAnimationStyle android_itemTextAppearance android_horizontalDivider android_verticalDivider android_headerBackground android_itemBackground android_itemIconDisabledAlpha preserveIconSpacing subMenuArrow

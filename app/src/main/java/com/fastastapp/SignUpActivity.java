@@ -85,8 +85,14 @@ public class SignUpActivity extends AppCompatActivity {
                     if(response.isSuccessful()) {
                         Toast.makeText(SignUpActivity.this, "Successful account creation", Toast.LENGTH_SHORT).show();
 
+                        User tmp = response.body();
                         //redirect to welcome page
                         Intent intent = new Intent(SignUpActivity.this, HomePageActivity.class);
+                        intent.putExtra("userId",tmp.getId());
+                        intent.putExtra("username",tmp.getUsername());
+                        intent.putExtra("email",tmp.getEmail());
+
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }
                     else{
