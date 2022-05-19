@@ -27,14 +27,14 @@ public final class TestFrameBinding implements ViewBinding {
   public final ImageView img;
 
   @NonNull
-  public final TextView text;
+  public final TextView textTestName;
 
   private TestFrameBinding(@NonNull CardView rootView, @NonNull CardView card,
-      @NonNull ImageView img, @NonNull TextView text) {
+      @NonNull ImageView img, @NonNull TextView textTestName) {
     this.rootView = rootView;
     this.card = card;
     this.img = img;
-    this.text = text;
+    this.textTestName = textTestName;
   }
 
   @Override
@@ -72,13 +72,13 @@ public final class TestFrameBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.text;
-      TextView text = ViewBindings.findChildViewById(rootView, id);
-      if (text == null) {
+      id = R.id.text_test_name;
+      TextView textTestName = ViewBindings.findChildViewById(rootView, id);
+      if (textTestName == null) {
         break missingId;
       }
 
-      return new TestFrameBinding((CardView) rootView, card, img, text);
+      return new TestFrameBinding((CardView) rootView, card, img, textTestName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -58,7 +58,7 @@ public class TestDataActivity extends AppCompatActivity {
 
         ServiceGenerator serviceGenerator = new ServiceGenerator();
         UserApi loginService =
-                ServiceGenerator.createService(UserApi.class, "m@gmail.com", "qwe1@rty");
+                ServiceGenerator.createService(UserApi.class, "m1@gmail.com", "qwe1@rty");
 
         loginService.logIn().enqueue(new Callback<User>() {
             @Override
@@ -85,7 +85,7 @@ public class TestDataActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rv.setLayoutManager(layoutManager);
 
-        rv.setAdapter(new VariantAdapter(variants,this));
+        rv.setAdapter(new VariantAdapter(variants));
 
     }
 }

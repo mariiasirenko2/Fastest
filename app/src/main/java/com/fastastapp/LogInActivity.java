@@ -18,13 +18,14 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import okhttp3.Credentials;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LogInActivity extends AppCompatActivity  {
+public class LogInActivity extends AppCompatActivity {
 
-    private TextInputEditText  regEmail, regPassword;
+    private TextInputEditText regEmail, regPassword;
     private Button callSignUp, callHomePage;
 
 
@@ -48,54 +49,64 @@ public class LogInActivity extends AppCompatActivity  {
         });
 
 
-
     }
 
-    private  void sendDataToLogin(){
+    private void sendDataToLogin() {
         //find input data objects
-        regEmail =findViewById(R.id.login_username_input);
-        regPassword =findViewById(R.id.login_password_input);
+        regEmail = findViewById(R.id.login_username_input);
+        regPassword = findViewById(R.id.login_password_input);
 
         //find registration button object
         callHomePage = findViewById(R.id.login_button);
+
+
         callHomePage.setOnClickListener(view -> {
 
             //extract data from input objects
             String email = String.valueOf(regEmail.getText());
             String pass = String.valueOf(regPassword.getText());
 
-//////////////////////////
-            Intent intent = new Intent(LogInActivity.this, HomePageActivity.class);
-            startActivity(intent);
 
+            //TODO: deltete when all will be done
+          //  Intent intent = new Intent(LogInActivity.this, HomePageActivity.class);
+           // startActivity(intent);
+
+            ServiceGenerator serviceGenerator = new ServiceGenerator();
             //generate an authHeader
             UserApi loginService =
-                    ServiceGenerator.createService(UserApi.class, email, pass);
+                    serviceGenerator.createService(UserApi.class, email, pass);
 
-            Call<User> call = loginService.logIn();
-            call.enqueue(new Callback<User >() {
+            //try to log in
+            loginService.logIn().enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
-                    if(response.isSuccessful()){
-                        Toast.makeText(LogInActivity.this, "Successful Login", Toast.LENGTH_SHORT).show();
+
+                    if (response.isSuccessful()) {
+
+                        Toast.makeText(LogInActivity.this, "Successful Login "  , Toast.LENGTH_SHORT).show();
+
                         User tmp = response.body();
-                        //redirect to Welcome Page
+                        //redirect to Home Page
                         Intent intent = new Intent(LogInActivity.this, HomePageActivity.class);
-                        intent.putExtra("userId",tmp.getId());
-                        intent.putExtra("username",tmp.getUsername());
-                        intent.putExtra("email",tmp.getEmail());
+
+                        //send token to activity
+                        intent.putExtra("authToken", Credentials.basic(email, pass));
+                        intent.putExtra("userId", response.body().getId());
+
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(LogInActivity.this, "Failed. Check input data", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        Toast.makeText(LogInActivity.this, "Failed. Check input data " + response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
-                    Toast.makeText(LogInActivity.this,"Something crashed", Toast.LENGTH_SHORT).show();
-                    Logger.getLogger(SignUpActivity.class.getName()).log(Level.SEVERE, "Error occurred");
+
+                    Toast.makeText(LogInActivity.this, "Something crashed", Toast.LENGTH_SHORT).show();
+
+                    Logger.getLogger(LogInActivity.class.getName()).log(Level.SEVERE, "Error to Login. Server not response");
 
                 }
             });

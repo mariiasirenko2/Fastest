@@ -1,5 +1,7 @@
 package com.fastastapp.model;
 
+import java.util.Collection;
+
 public class User {
 
     private int id;
@@ -10,7 +12,7 @@ public class User {
 
     private String password;
 
-    //private Collection<Test> tests;
+    private Collection<Test> tests;
 
     public User() {
     }
@@ -51,6 +53,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Collection<Test> getTests() {
+        return tests;
     }
 
 

@@ -1,12 +1,22 @@
 package com.fastastapp;
 
+import android.Manifest;
+import android.content.ContentValues;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageCapture;
 import androidx.camera.core.ImageCaptureException;
-import androidx.camera.core.ImageProxy;
 import androidx.camera.core.Preview;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
@@ -14,26 +24,19 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 
-import android.Manifest;
-import android.content.ContentValues;
-import android.content.pm.PackageManager;
-import android.graphics.Camera;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.Toast;
-
+import com.fastastapp.model.User;
+import com.fastastapp.retrofit.ServiceGenerator;
+import com.fastastapp.retrofit.UserApi;
 import com.google.common.util.concurrent.ListenableFuture;
 
-import java.io.File;
-import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -42,51 +45,64 @@ public class CameraActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CAMERA = 111;
     private static final int PERMISSION_REQUEST_WRITE_EX_STORAGE = 121;
 
-    Button takePhoto;
-    PreviewView previewView;
-    ImageCapture imageCapture;
-    Uri uri;
+    private Button takePhoto;
+    private PreviewView previewView;
+    private ImageCapture imageCapture;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
+        //set  toolbar configurations
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> onBackPressed());
+
+        //get AuthToken from intent
+        String token = getIntent().getStringExtra("authToken");
 
         takePhoto = findViewById(R.id.bCapture);
         previewView = findViewById(R.id.previewView);
 
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},PERMISSION_REQUEST_CAMERA);
-        }else {
-            Toast.makeText(this,
-                    "Permissions not granted by the user.",
-                    Toast.LENGTH_SHORT).show();
+        UserApi loginService =
+                ServiceGenerator.createService(UserApi.class, token);
 
-        }
-
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},PERMISSION_REQUEST_WRITE_EX_STORAGE);
-        }else {
-            Toast.makeText(this,
-                    "Permissions not granted by the user.",
-                    Toast.LENGTH_SHORT).show();
-
-        }
-        takePhoto.setOnClickListener(new View.OnClickListener() {
+        loginService.logIn().enqueue(new Callback<User>() {
             @Override
-            public void onClick(View view) {
-                capturePhoto();
+            public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(CameraActivity.this, "Login (camera)", Toast.LENGTH_SHORT).show();
+
+                }
+                else{
+                    Toast.makeText(CameraActivity.this, "Failed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+                Toast.makeText(CameraActivity.this,"Something crashed 1", Toast.LENGTH_SHORT).show();
+                Logger.getLogger(SignUpActivity.class.getName()).log(Level.SEVERE, "Error occurred");
             }
         });
+
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},PERMISSION_REQUEST_CAMERA);
+        }
+        else {
+            Toast.makeText(this,
+                    "Permissions not granted by the user.",
+                    Toast.LENGTH_SHORT).show();
+
+        }
+
+       if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},PERMISSION_REQUEST_WRITE_EX_STORAGE);
+        }
+
+        takePhoto.setOnClickListener(view -> capturePhoto());
 
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         cameraProviderFuture.addListener(() -> {

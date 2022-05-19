@@ -18,21 +18,22 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import okhttp3.Credentials;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
-    private TextInputEditText regUsername, regEmail, regPassword;
 
-    Button regBtn, goToLoginBtn;
+    private TextInputEditText regUsername, regEmail, regPassword;
+    private Button regBtn, goToLoginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        //delete Top Bar
 
+        //delete Top Bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sing_up);
 
@@ -51,15 +52,12 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void sendDataToSignUp() {
+
         //find input data objects
-        regUsername =findViewById(R.id.signup_username_input);
-         regEmail =findViewById(R.id.signup_email_input);
-         regPassword =findViewById(R.id.signup_password_input);
+        regUsername = findViewById(R.id.signup_username_input);
+        regEmail = findViewById(R.id.signup_email_input);
+        regPassword = findViewById(R.id.signup_password_input);
 
-        //call retrofit to connect to server
-
-        ServiceGenerator serviceGenerator = new ServiceGenerator();
-        UserApi userApi = serviceGenerator.createService(UserApi.class);
 
         //find registration button object
         regBtn = findViewById(R.id.registration_button);
@@ -71,39 +69,46 @@ public class SignUpActivity extends AppCompatActivity {
             String password = String.valueOf(regPassword.getText());
 
             //make new user
-            User user = new User(name,email,password);
+            User user = new User(name, email, password);
 
             //validate input data
             if (!validateEmail() | !validateUsername() | !validatePassword()) {
                 return;
             }
 
+            //call retrofit to connect to server
+            UserApi userApi = ServiceGenerator.createService(UserApi.class);
+
+            //try to sign up
             userApi.addNewUser(user).enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(@NonNull Call<User> call, @NonNull Response<User>
                         response) {
-                    if(response.isSuccessful()) {
+
+                    if (response.isSuccessful()) {
+
                         Toast.makeText(SignUpActivity.this, "Successful account creation", Toast.LENGTH_SHORT).show();
 
                         User tmp = response.body();
                         //redirect to welcome page
                         Intent intent = new Intent(SignUpActivity.this, HomePageActivity.class);
-                        intent.putExtra("userId",tmp.getId());
-                        intent.putExtra("username",tmp.getUsername());
-                        intent.putExtra("email",tmp.getEmail());
+                        //send token to activity
+                        intent.putExtra("authToken", Credentials.basic(email, password));
+                        intent.putExtra("userId", response.body().getId());
 
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(SignUpActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        Toast.makeText(SignUpActivity.this, "Registration failed. Check input data : " +response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
-                    Toast.makeText(SignUpActivity.this,"Something crashed", Toast.LENGTH_SHORT).show();
-                    Logger.getLogger(SignUpActivity.class.getName()).log(Level.SEVERE, "Error occurred");
+
+                    Toast.makeText(SignUpActivity.this, "Something crashed", Toast.LENGTH_SHORT).show();
+                    Logger.getLogger(SignUpActivity.class.getName()).log(Level.SEVERE, "Error to singUp. Server not response");
                 }
             });
 
@@ -126,6 +131,7 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
         }
     }
+
     private Boolean validateEmail() {
         String val = String.valueOf(regEmail.getText());
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -141,6 +147,7 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
         }
     }
+
     private Boolean validatePassword() {
         String val = String.valueOf(regPassword.getText());
         String passwordVal = "^" +

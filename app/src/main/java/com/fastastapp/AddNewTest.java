@@ -15,16 +15,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fastastapp.model.User;
 import com.fastastapp.retrofit.ServiceGenerator;
 import com.fastastapp.retrofit.UserApi;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -39,8 +43,10 @@ public class AddNewTest extends AppCompatActivity {
     Button attachQuestions, attachStudents, generateTest;
     TextView fileQuestions, fileStudents;
      TextInputEditText getName;
-     Uri uri;
-    ActivityResultLauncher<Intent> sActivityResultLauncher;
+     Uri uriQ,uriS;
+    UserApi api;
+    int userId;
+    ActivityResultLauncher<Intent> activityResultLauncherQ,activityResultLauncherS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,11 +55,15 @@ public class AddNewTest extends AppCompatActivity {
         attachQuestions = findViewById(R.id.attach_questions);
         attachStudents = findViewById(R.id.attach_students);
         fileQuestions=findViewById(R.id.file_name_questions);
+        fileStudents=findViewById(R.id.file_name_students);
+
         generateTest = findViewById(R.id.generateTest);
         getName = findViewById(R.id.input_test_name);
 
         String testName = String.valueOf(getName.getText());
 
+        String token = getIntent().getStringExtra("authToken");
+        userId = getIntent().getIntExtra("userId",0);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -63,6 +73,11 @@ public class AddNewTest extends AppCompatActivity {
             }
         });
 
+         api =
+                ServiceGenerator.createService(UserApi.class,token);
+
+
+
 
 
 
@@ -70,18 +85,18 @@ public class AddNewTest extends AppCompatActivity {
         attachQuestions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openFileDialog(view);
+                openFileDialog(view,activityResultLauncherQ);
             }
         });
 
         attachStudents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openFileDialog(view);
+                openFileDialog(view,activityResultLauncherS);
             }
         });
 
-        sActivityResultLauncher = registerForActivityResult(
+        activityResultLauncherQ = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
 
@@ -89,8 +104,23 @@ public class AddNewTest extends AppCompatActivity {
                     public void onActivityResult(ActivityResult result) {
                         if(result.getResultCode() == Activity.RESULT_OK){
                             Intent data = result.getData();
-                             uri = data.getData();
+                             uriQ = data.getData();
                             fileQuestions.setText("Добавлено");
+
+
+                        }
+                    }
+                });
+        activityResultLauncherS = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if(result.getResultCode() == Activity.RESULT_OK){
+                            Intent data = result.getData();
+                            uriS = data.getData();
+                            fileStudents.setText("Добавлено");
 
 
                         }
@@ -99,8 +129,10 @@ public class AddNewTest extends AppCompatActivity {
         generateTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                uploadFile(uriQ,uriS,testName);
 
-                uploadFile(uri,testName);
+            //    Toast.makeText(AddNewTest.this, "UserId = "+ userId, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -108,67 +140,69 @@ public class AddNewTest extends AppCompatActivity {
     }
 
 
-    public void openFileDialog (View view){
+    public void openFileDialog (View view, ActivityResultLauncher<Intent> activityResultLauncher){
         Intent data = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         data.addCategory(Intent.CATEGORY_OPENABLE);
         data.setType("*/*");
         String[] mimetypes = {"application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/msword"};
         data.putExtra(Intent.EXTRA_MIME_TYPES,mimetypes);
         data = Intent.createChooser(data, "Choose a file");
-        sActivityResultLauncher.launch(data);
+        activityResultLauncher.launch(data);
     }
 
-    private  void uploadFile(Uri fileUri, String testName){
-        RequestBody descriptionPart = RequestBody.create(MultipartBody.FORM,testName);
-        File fileQ = new File(getRealPathFromURI(this,fileUri));
+    private  void uploadFile(Uri fileUri,Uri fileUriS, String testName){
+
+       // RequestBody descriptionPart = RequestBody.create(MediaType.parse("text/plain"),testName);
+        File fileQ = new File(getRealPathFromUri(fileUri.getPath()));
         RequestBody fileQuestions = RequestBody.create(MediaType.parse(getContentResolver().getType(fileUri)), fileQ);
-        ServiceGenerator serviceGenerator = new ServiceGenerator();
-        UserApi userApi = serviceGenerator.createService(UserApi.class);
+        //ServiceGenerator serviceGenerator = new ServiceGenerator();
 
-        MultipartBody.Part file =MultipartBody.Part.createFormData("questoins",fileQ.getName(),fileQuestions);
+        MultipartBody.Part file =MultipartBody.Part.createFormData("questionFile",fileQ.getName(),fileQuestions);
 
-        Call<ResponseBody> call =userApi.uploadFiles(descriptionPart,file);
 
-        call.enqueue(new Callback<ResponseBody>() {
+        File fileSt = new File(getRealPathFromUri(fileUriS.getPath()));
+        RequestBody fileStudents = RequestBody.create(MediaType.parse(getContentResolver().getType(fileUriS)), fileSt);
+
+        MultipartBody.Part fileS =MultipartBody.Part.createFormData("studentFile",fileSt.getName(),fileStudents);
+        api.uploadFiles(testName,file,fileS,userId).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-                if(response.isSuccessful())
-                Toast.makeText(AddNewTest.this, "yea!!!!!!", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(AddNewTest.this, "+", Toast.LENGTH_SHORT).show();
+                if(response.isSuccessful()) {
+                    Toast.makeText(AddNewTest.this, "yea!!!!!!", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(AddNewTest.this, HomePageActivity.class);
+                    intent.putExtra("userId",userId);
+                    startActivity(intent);
+
+                } else
+                    Toast.makeText(AddNewTest.this, "+ "+ response.code() , Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(AddNewTest.this, "no(", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddNewTest.this, "no(  " + t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         }) ;
+
     }
-    public static String getRealPathFromURI(Context context, Uri uri){
-        String filePath = "";
-        String wholeID = DocumentsContract.getDocumentId(uri);
+    public static String getRealPathFromUri(String uri) {
 
-        // Split at colon, use second item in the array
-        String id = wholeID.split(":")[1];
 
-        String[] column = { MediaStore.Images.Media.DATA };
-
-        // where id is equal to
-        String sel = MediaStore.Images.Media._ID + "=?";
-
-        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                column, sel, new String[]{ id }, null);
-
-        int columnIndex = cursor.getColumnIndex(column[0]);
-
-        if (cursor.moveToFirst()) {
-            filePath = cursor.getString(columnIndex);
-        }
-        cursor.close();
-        return filePath;
+        /*String[] filePathColumn = { MediaStore.Files.FileColumns.DATA };
+        String picturePath = "hello";
+        Cursor cursor = ctx.getContentResolver().query(uri, filePathColumn,
+                null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+             picturePath = cursor.getString(columnIndex);
+            Log.e("", "picturePath : " + picturePath);
+            cursor.close();
+        }*/
+        return uri.substring(uri.indexOf(":") + 1).trim();
     }
 
 }

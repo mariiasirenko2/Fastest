@@ -29,11 +29,14 @@ public interface UserApi {
     Call<List<Test>>getTests(@Path("idUser") int idUser);
 
 
+    //rewrite
     @Multipart
-    @POST("/profile/{idUser}/GenerateTest")
+    @POST("/fastest/profile/{idUser}/GenerateTest")
     Call<ResponseBody> uploadFiles(
-            @Part("testName")RequestBody testName,
-            @Part MultipartBody.Part fileQuestions
+            @Part ("testName")String  testName,
+            @Part MultipartBody.Part fileQuestions,
+            @Part MultipartBody.Part fileStudents,
+            @Path ("idUser") int idUser
             );
 
 }

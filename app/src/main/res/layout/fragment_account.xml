@@ -27,7 +27,7 @@
            android:layout_centerVertical="true"
            android:layout_marginLeft="20dp"
            android:layout_toRightOf="@id/profile_image"
-           android:text="Mariia Sirenko"
+           android:text=""
            android:textSize="20sp"
            android:textStyle="bold" />
 
@@ -39,7 +39,7 @@
            android:layout_centerVertical="true"
            android:layout_marginLeft="20dp"
            android:layout_toRightOf="@id/profile_image"
-           android:text="test@gmail.com" />
+           android:text="" />
 
    </RelativeLayout>
 

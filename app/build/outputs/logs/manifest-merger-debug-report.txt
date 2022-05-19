@@ -129,6 +129,8 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /home/masha/.gradle/cac
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /home/masha/.gradle/caches/transforms-3/0e4a425e61d135d109d64d5f17d999df/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:25:5-35:19
 MERGED from [androidx.startup:startup-runtime:1.0.0] /home/masha/.gradle/caches/transforms-3/46500c3b5c1ccf84767a89139e7d74da/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.startup:startup-runtime:1.0.0] /home/masha/.gradle/caches/transforms-3/46500c3b5c1ccf84767a89139e7d74da/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+	android:requestLegacyExternalStorage
+		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:12:18-61
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.7.0] /home/masha/.gradle/caches/transforms-3/9339927e08badd09bc5459e4ba900d5f/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
 	android:supportsRtl

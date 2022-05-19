@@ -3139,6 +3139,7 @@ int id text_input_end_icon 0x7f0801ee
 int id text_input_error_icon 0x7f0801ef
 int id text_input_layout 0x7f0801f0
 int id text_input_start_icon 0x7f0801f1
+int id text_test_name 0x7f080234
 int id textinput_counter 0x7f0801f2
 int id textinput_error 0x7f0801f3
 int id textinput_helper_text 0x7f0801f4
