@@ -1,23 +1,29 @@
-com/fastastapp/model/VariantQuestion.java
- com.fastastapp.model.VariantQuestion
-com/fastastapp/retrofit/AuthenticationInterceptor.java
- com.fastastapp.retrofit.AuthenticationInterceptor
 com/fastastapp/model/User.java
  com.fastastapp.model.User
-com/fastastapp/BuildConfig.java
- com.fastastapp.BuildConfig
-com/fastastapp/model/Question.java
- com.fastastapp.model.Question
-com/fastastapp/model/Variant.java
- com.fastastapp.model.Variant
-com/fastastapp/retrofit/ServiceGenerator.java
- com.fastastapp.retrofit.ServiceGenerator
-com/fastastapp/model/Test.java
- com.fastastapp.model.Test
-com/fastastapp/model/Answer.java
- com.fastastapp.model.Answer
+com/fastastapp/PhotoAnalayzer/Util.java
+ com.fastastapp.PhotoAnalayzer.Util
 com/fastastapp/retrofit/UserApi.java
  com.fastastapp.retrofit.UserApi
+com/fastastapp/BuildConfig.java
+ com.fastastapp.BuildConfig
+com/fastastapp/model/Test.java
+ com.fastastapp.model.Test
+com/fastastapp/model/VariantQuestion.java
+ com.fastastapp.model.VariantQuestion
+com/fastastapp/model/Variant.java
+ com.fastastapp.model.Variant
+com/fastastapp/PhotoAnalayzer/Answers.java
+ com.fastastapp.PhotoAnalayzer.Answers
+com/fastastapp/model/Question.java
+ com.fastastapp.model.Question
+com/fastastapp/retrofit/ServiceGenerator.java
+ com.fastastapp.retrofit.ServiceGenerator
+com/fastastapp/retrofit/AuthenticationInterceptor.java
+ com.fastastapp.retrofit.AuthenticationInterceptor
+com/fastastapp/model/Answer.java
+ com.fastastapp.model.Answer
+com/fastastapp/PhotoAnalayzer/Scanner.java
+ com.fastastapp.PhotoAnalayzer.Scanner
 com/fastastapp/AddNewTest.java
  com.fastastapp.AddNewTest
  com.fastastapp.AddNewTest$1
@@ -48,16 +54,19 @@ com/fastastapp/databinding/ActivityHomePageBinding.java
  com.fastastapp.databinding.ActivityHomePageBinding
 com/fastastapp/databinding/FragmentTestBinding.java
  com.fastastapp.databinding.FragmentTestBinding
+com/fastastapp/databinding/ActivityResultBinding.java
+ com.fastastapp.databinding.ActivityResultBinding
 com/fastastapp/adapters/VariantAdapter.java
  com.fastastapp.adapters.VariantAdapter
  com.fastastapp.adapters.VariantAdapter$VariantViewHolder
+com/fastastapp/Result.java
+ com.fastastapp.Result
 com/fastastapp/LogInActivity.java
  com.fastastapp.LogInActivity
  com.fastastapp.LogInActivity$1
 com/fastastapp/CameraActivity.java
  com.fastastapp.CameraActivity
  com.fastastapp.CameraActivity$1
- com.fastastapp.CameraActivity$2
 com/fastastapp/databinding/VariantCardBinding.java
  com.fastastapp.databinding.VariantCardBinding
 com/fastastapp/databinding/ActivityCameraBinding.java

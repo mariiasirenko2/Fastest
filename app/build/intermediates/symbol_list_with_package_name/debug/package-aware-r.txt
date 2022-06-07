@@ -210,6 +210,7 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
+attr camera_id
 attr captureMode
 attr cardBackgroundColor
 attr cardCornerRadius
@@ -980,6 +981,7 @@ attr showMotionSpec
 attr showPaths
 attr showText
 attr showTitle
+attr show_fps
 attr shrinkMotionSpec
 attr simpleItemLayout
 attr simpleItems
@@ -2553,6 +2555,8 @@ drawable design_snackbar_background
 drawable ic_a
 drawable ic_account
 drawable ic_android_black_24dp
+drawable ic_app
+drawable ic_app_img
 drawable ic_baseline_add_24
 drawable ic_baseline_arrow_back_24
 drawable ic_baseline_arrow_upward_24
@@ -2706,6 +2710,7 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
+id any
 id app_bar_layout
 id arc
 id asConfigured
@@ -2875,6 +2880,8 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imageView
+id imageView2
 id img
 id immediateStop
 id included
@@ -3136,6 +3143,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
 id text_input_end_icon
 id text_input_error_icon
 id text_input_layout
@@ -3293,6 +3301,7 @@ layout activity_add_new_test
 layout activity_camera
 layout activity_home_page
 layout activity_login
+layout activity_result
 layout activity_sing_up
 layout activity_splash
 layout activity_test_data
@@ -4649,6 +4658,7 @@ styleable BottomAppBar backgroundTint elevation fabAlignmentMode fabAnimationMod
 styleable BottomNavigationView android_minHeight itemHorizontalTranslationEnabled
 styleable BottomSheetBehavior_Layout android_maxWidth android_maxHeight android_elevation backgroundTint behavior_draggable behavior_expandedOffset behavior_fitToContents behavior_halfExpandedRatio behavior_hideable behavior_peekHeight behavior_saveFlags behavior_skipCollapsed gestureInsetBottomIgnored marginLeftSystemWindowInsets marginRightSystemWindowInsets marginTopSystemWindowInsets paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets paddingTopSystemWindowInsets shapeAppearance shapeAppearanceOverlay
 styleable ButtonBarLayout allowStacking
+styleable CameraBridgeViewBase camera_id show_fps
 styleable CameraView scaleType captureMode flash lensFacing pinchToZoomEnabled
 styleable Capability queryPatterns shortcutMatchRequired
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop

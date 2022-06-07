@@ -1,13 +1,20 @@
 package com.fastastapp;
 
+import static org.opencv.android.Utils.bitmapToMat;
+
 import android.Manifest;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
+import android.util.Log;
+import android.util.Size;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -24,23 +31,22 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 
-import com.fastastapp.model.User;
-import com.fastastapp.retrofit.ServiceGenerator;
-import com.fastastapp.retrofit.UserApi;
+import com.fastastapp.PhotoAnalayzer.Scanner;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Mat;
+import org.opencv.objdetect.QRCodeDetector;
+
+import java.io.FileDescriptor;
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CameraActivity extends AppCompatActivity {
 
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
+
 
     private static final int PERMISSION_REQUEST_CAMERA = 111;
     private static final int PERMISSION_REQUEST_WRITE_EX_STORAGE = 121;
@@ -49,6 +55,13 @@ public class CameraActivity extends AppCompatActivity {
     private PreviewView previewView;
     private ImageCapture imageCapture;
     private Uri uri;
+
+    static {
+        if (!OpenCVLoader.initDebug())
+            Log.d("ERROR", "Unable to load OpenCV");
+        else
+            Log.d("SUCCESS", "OpenCV loaded");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,27 +79,7 @@ public class CameraActivity extends AppCompatActivity {
         takePhoto = findViewById(R.id.bCapture);
         previewView = findViewById(R.id.previewView);
 
-        UserApi loginService =
-                ServiceGenerator.createService(UserApi.class, token);
 
-        loginService.logIn().enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
-                if(response.isSuccessful()){
-                    Toast.makeText(CameraActivity.this, "Login (camera)", Toast.LENGTH_SHORT).show();
-
-                }
-                else{
-                    Toast.makeText(CameraActivity.this, "Failed.", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
-                Toast.makeText(CameraActivity.this,"Something crashed 1", Toast.LENGTH_SHORT).show();
-                Logger.getLogger(SignUpActivity.class.getName()).log(Level.SEVERE, "Error occurred");
-            }
-        });
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.CAMERA},PERMISSION_REQUEST_CAMERA);
@@ -150,8 +143,35 @@ public class CameraActivity extends AppCompatActivity {
                 new ImageCapture.OnImageSavedCallback() {
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                        Toast toast = Toast.makeText(CameraActivity.this,"Succeed image capture" ,Toast.LENGTH_LONG);
                         uri = outputFileResults.getSavedUri();
+                        Intent intent = new Intent(CameraActivity.this, Result.class);
+
+                       intent.putExtra("uri", uri.toString());
+                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                      startActivity(intent);
+                        //TODO: get file from uri not work . source is empty!!!! FIX
+                        Mat source = new Mat() ;
+
+                        try {
+                            Bitmap  bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                            bitmapToMat(bitmap,source);
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Toast toast;
+                        if(source.empty())   toast = Toast.makeText(CameraActivity.this,"----" ,Toast.LENGTH_LONG);
+                    else {
+                            Scanner scanner = new Scanner(source, 20);
+
+                            QRCodeDetector qrCodeDetector = new QRCodeDetector();
+                            String qr = qrCodeDetector.detectAndDecode(source);
+                            String qr2 = scanner.detectQRCode();
+                             toast = Toast.makeText(CameraActivity.this, "Succeed image capture: QRCode  "+qr+"   "+ qr2 , Toast.LENGTH_LONG);
+
+                             Log.i("QR",qr);
+                             Log.i("QR",qr2);
+                        }
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                     }
@@ -183,12 +203,24 @@ public class CameraActivity extends AppCompatActivity {
         // Image capture use case
         imageCapture = new ImageCapture.Builder()
                 .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
+                .setTargetResolution(new Size(720,1280))
                 .build();
 
         //bind to lifecycle:
         cameraProvider.bindToLifecycle((LifecycleOwner) this, cameraSelector, preview, imageCapture);
 
     }
+    private void uriToBitmap(Uri selectedFileUri) {
+        try {
+            ParcelFileDescriptor parcelFileDescriptor =
+                    getContentResolver().openFileDescriptor(selectedFileUri, "r");
+            FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+            Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
 
+            parcelFileDescriptor.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

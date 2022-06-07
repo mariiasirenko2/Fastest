@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-    private static final String BASE_URL = "";//http://your_IP:tomcat_port  ex: http://111.111.11.11:8080
+    private static final String BASE_URL = "http://192.168.88.182:8080";//http://your_IP:tomcat_port  ex: http://111.111.11.11:8080
 
     private static final OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
     private static final Retrofit.Builder builder =

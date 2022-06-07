@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.quickbirdstudios:opencv:4.5.2@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/transforms-3/2838d834b157ff1d2acd6cb5ee1a8ec6/transformed/jetified-opencv-4.5.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/2838d834b157ff1d2acd6cb5ee1a8ec6/transformed/jetified-opencv-4.5.2/res" />
+      <root url="file://$PROJECT_DIR$/../.gradle/caches/transforms-3/2838d834b157ff1d2acd6cb5ee1a8ec6/transformed/jetified-opencv-4.5.2/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/com.quickbirdstudios/opencv/4.5.2/fc81221c823dafe4c55f88908c176ff01e0d9e82/opencv-4.5.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

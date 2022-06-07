@@ -24,7 +24,7 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:extractNativeLibs="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_app_img"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -32,6 +32,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.FastastApp"
         android:usesCleartextTraffic="true" >
+        <activity
+            android:name="com.fastastapp.Result"
+            android:exported="false" />
         <activity
             android:name="com.fastastapp.CameraActivity"
             android:exported="false" />

@@ -80,8 +80,16 @@
         "source": "/home/masha/Fastest/app/src/main/res/drawable/ic_dashboard_black_24dp.xml"
     },
     {
+        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/layout_activity_result.xml.flat",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_result.xml"
+    },
+    {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable_ic_insert_drive_file.xml.flat",
         "source": "/home/masha/Fastest/app/src/main/res/drawable/ic_insert_drive_file.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable_ic_app_img.xml.flat",
+        "source": "/home/masha/Fastest/app/src/main/res/drawable/ic_app_img.xml"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable-v24_background.png.flat",
@@ -138,6 +146,10 @@
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable_ic_baseline_back_hand_24.xml.flat",
         "source": "/home/masha/Fastest/app/src/main/res/drawable/ic_baseline_back_hand_24.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/drawable_ic_app.xml.flat",
+        "source": "/home/masha/Fastest/app/src/main/res/drawable/ic_app.xml"
     },
     {
         "merged": "/home/masha/Fastest/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",

@@ -39,7 +39,7 @@ public class LogInActivity extends AppCompatActivity {
 
 
         //on LogIn Button Click
-        sendDataToLogin();
+       sendDataToLogin();
 
         //Go to Sign Up Page
         callSignUp = findViewById(R.id.redirect_signup_button);
@@ -85,7 +85,6 @@ public class LogInActivity extends AppCompatActivity {
 
                         Toast.makeText(LogInActivity.this, "Successful Login "  , Toast.LENGTH_SHORT).show();
 
-                        User tmp = response.body();
                         //redirect to Home Page
                         Intent intent = new Intent(LogInActivity.this, HomePageActivity.class);
 
