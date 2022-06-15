@@ -2,9 +2,7 @@ package com.fastastapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -14,13 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.fastastapp.databinding.ActivityHomePageBinding;
 import com.fastastapp.fragment.AccountFragment;
 import com.fastastapp.fragment.TestFragment;
-import com.fastastapp.model.User;
-import com.fastastapp.retrofit.ServiceGenerator;
-import com.fastastapp.retrofit.UserApi;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -35,11 +26,12 @@ public class HomePageActivity extends AppCompatActivity {
 
         //get AuthToken
         String token = getIntent().getStringExtra("authToken");
-        int userId = getIntent().getIntExtra("userId",0);
+        int userId = getIntent().getIntExtra("userId", 0);
 
+        //send data to Fragment
         Bundle bundle = new Bundle();
-        bundle.putString("authToken", token );
-        bundle.putInt("userId",userId);
+        bundle.putString("authToken", token);
+        bundle.putInt("userId", userId);
 
         //place starter fragment - Test
         setContentView(binding.getRoot());
@@ -53,11 +45,9 @@ public class HomePageActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
 
-
-
-       binding.bottomNavigationView.setOnItemSelectedListener(
+        binding.bottomNavigationView.setOnItemSelectedListener(
                 item -> {
-                    switch (item.getItemId()){
+                    switch (item.getItemId()) {
                         case R.id.home:
 
                             TestFragment testFragmentNew = new TestFragment();
@@ -65,6 +55,7 @@ public class HomePageActivity extends AppCompatActivity {
                             replaceFragment(testFragmentNew);
                             break;
                         case R.id.photo:
+
                             Intent intent = new Intent(HomePageActivity.this, CameraActivity.class);
                             intent.putExtra("authToken", token);
                             intent.putExtra("userId", userId);
@@ -84,10 +75,10 @@ public class HomePageActivity extends AppCompatActivity {
 
     }
 
-    private void  replaceFragment (Fragment fragment){
+    private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction =fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout,fragment);
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
     }
 }

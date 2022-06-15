@@ -11,5 +11,5 @@ public class VariantQuestion {
 
     private int questionNumber;
 
-    private char letterAnswer;
+    private Chars letterAnswer;
 }

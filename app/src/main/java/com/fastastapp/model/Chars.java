@@ -1,9 +1,9 @@
-package com.fastastapp.PhotoAnalayzer;
+package com.fastastapp.model;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Answers {
+public enum Chars {
     EMPTY(0),
     A(1),
     B(2),
@@ -12,16 +12,17 @@ public enum Answers {
     private int value;
     private static Map map = new HashMap<>();
 
-    private Answers(int value) {
+    private Chars(int value) {
         this.value = value;
     }
 
     static {
-        for (Answers answer : Answers.values()) {
+        for (Chars answer : Chars.values()) {
             map.put(answer.value, answer);
         }
     }
-    public static Answers valueOf(int answer) {
-        return (Answers) map.get(answer);
+    public static Chars valueOf(int answer) {
+        return (Chars) map.get(answer);
     }
 }
+

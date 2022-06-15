@@ -5,9 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,47 +33,42 @@ public final class ActivityAddNewTestBinding implements ViewBinding {
   public final Button attachStudents;
 
   @NonNull
-  public final TextView fileName;
-
-  @NonNull
   public final TextView fileNameQuestions;
 
   @NonNull
   public final TextView fileNameStudents;
 
   @NonNull
+  public final TextView fileQuestions;
+
+  @NonNull
+  public final TextView fileStudents;
+
+  @NonNull
   public final Button generateTest;
 
   @NonNull
-  public final ImageView iconFile;
-
-  @NonNull
   public final TextInputEditText inputTestName;
-
-  @NonNull
-  public final RelativeLayout parentRelative;
 
   @NonNull
   public final Toolbar toolbar;
 
   private ActivityAddNewTestBinding(@NonNull LinearLayout rootView,
       @NonNull AppBarLayout appBarLayout, @NonNull Button attachQuestions,
-      @NonNull Button attachStudents, @NonNull TextView fileName,
-      @NonNull TextView fileNameQuestions, @NonNull TextView fileNameStudents,
-      @NonNull Button generateTest, @NonNull ImageView iconFile,
-      @NonNull TextInputEditText inputTestName, @NonNull RelativeLayout parentRelative,
-      @NonNull Toolbar toolbar) {
+      @NonNull Button attachStudents, @NonNull TextView fileNameQuestions,
+      @NonNull TextView fileNameStudents, @NonNull TextView fileQuestions,
+      @NonNull TextView fileStudents, @NonNull Button generateTest,
+      @NonNull TextInputEditText inputTestName, @NonNull Toolbar toolbar) {
     this.rootView = rootView;
     this.appBarLayout = appBarLayout;
     this.attachQuestions = attachQuestions;
     this.attachStudents = attachStudents;
-    this.fileName = fileName;
     this.fileNameQuestions = fileNameQuestions;
     this.fileNameStudents = fileNameStudents;
+    this.fileQuestions = fileQuestions;
+    this.fileStudents = fileStudents;
     this.generateTest = generateTest;
-    this.iconFile = iconFile;
     this.inputTestName = inputTestName;
-    this.parentRelative = parentRelative;
     this.toolbar = toolbar;
   }
 
@@ -124,12 +117,6 @@ public final class ActivityAddNewTestBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.file_name;
-      TextView fileName = ViewBindings.findChildViewById(rootView, id);
-      if (fileName == null) {
-        break missingId;
-      }
-
       id = R.id.file_name_questions;
       TextView fileNameQuestions = ViewBindings.findChildViewById(rootView, id);
       if (fileNameQuestions == null) {
@@ -142,27 +129,27 @@ public final class ActivityAddNewTestBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.file_Questions;
+      TextView fileQuestions = ViewBindings.findChildViewById(rootView, id);
+      if (fileQuestions == null) {
+        break missingId;
+      }
+
+      id = R.id.file_Students;
+      TextView fileStudents = ViewBindings.findChildViewById(rootView, id);
+      if (fileStudents == null) {
+        break missingId;
+      }
+
       id = R.id.generateTest;
       Button generateTest = ViewBindings.findChildViewById(rootView, id);
       if (generateTest == null) {
         break missingId;
       }
 
-      id = R.id.icon_file;
-      ImageView iconFile = ViewBindings.findChildViewById(rootView, id);
-      if (iconFile == null) {
-        break missingId;
-      }
-
       id = R.id.input_test_name;
       TextInputEditText inputTestName = ViewBindings.findChildViewById(rootView, id);
       if (inputTestName == null) {
-        break missingId;
-      }
-
-      id = R.id.parentRelative;
-      RelativeLayout parentRelative = ViewBindings.findChildViewById(rootView, id);
-      if (parentRelative == null) {
         break missingId;
       }
 
@@ -173,8 +160,8 @@ public final class ActivityAddNewTestBinding implements ViewBinding {
       }
 
       return new ActivityAddNewTestBinding((LinearLayout) rootView, appBarLayout, attachQuestions,
-          attachStudents, fileName, fileNameQuestions, fileNameStudents, generateTest, iconFile,
-          inputTestName, parentRelative, toolbar);
+          attachStudents, fileNameQuestions, fileNameStudents, fileQuestions, fileStudents,
+          generateTest, inputTestName, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

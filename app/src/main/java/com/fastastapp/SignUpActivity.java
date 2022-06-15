@@ -2,6 +2,7 @@ package com.fastastapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,10 +15,6 @@ import com.fastastapp.retrofit.ServiceGenerator;
 import com.fastastapp.retrofit.UserApi;
 import com.google.android.material.textfield.TextInputEditText;
 
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import okhttp3.Credentials;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +23,7 @@ import retrofit2.Response;
 public class SignUpActivity extends AppCompatActivity {
 
     private TextInputEditText regUsername, regEmail, regPassword;
-    private Button regBtn, goToLoginBtn;
+    private Button regBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +34,21 @@ public class SignUpActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sing_up);
 
+        //find input data objects
+        regUsername = findViewById(R.id.signup_username_input);
+        regEmail = findViewById(R.id.signup_email_input);
+        regPassword = findViewById(R.id.signup_password_input);
+
+
+        //find registration button object
+        regBtn = findViewById(R.id.registration_button);
+
         //on Registration Button Click
         sendDataToSignUp();
 
 
         //Go to Login Page
-        goToLoginBtn = findViewById(R.id.go_login_button);
+        Button goToLoginBtn = findViewById(R.id.go_login_button);
         goToLoginBtn.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity.this, LogInActivity.class);
             startActivity(intent);
@@ -53,14 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void sendDataToSignUp() {
 
-        //find input data objects
-        regUsername = findViewById(R.id.signup_username_input);
-        regEmail = findViewById(R.id.signup_email_input);
-        regPassword = findViewById(R.id.signup_password_input);
 
-
-        //find registration button object
-        regBtn = findViewById(R.id.registration_button);
         regBtn.setOnClickListener(view -> {
 
             //extract data from input objects
@@ -72,7 +71,7 @@ public class SignUpActivity extends AppCompatActivity {
             User user = new User(name, email, password);
 
             //validate input data
-            if (!validateEmail() | !validateUsername() | !validatePassword()) {
+            if (!validateEmail(email) | !validateUsername(name) | !validatePassword(password)) {
                 return;
             }
 
@@ -86,29 +85,28 @@ public class SignUpActivity extends AppCompatActivity {
                         response) {
 
                     if (response.isSuccessful()) {
+                        Log.d("SUCCESS", "Successful signup ");
 
-                        Toast.makeText(SignUpActivity.this, "Successful account creation", Toast.LENGTH_SHORT).show();
-
-                        User tmp = response.body();
                         //redirect to welcome page
                         Intent intent = new Intent(SignUpActivity.this, HomePageActivity.class);
                         //send token to activity
                         intent.putExtra("authToken", Credentials.basic(email, password));
-                        intent.putExtra("userId", response.body().getId());
+                        intent.putExtra("userId", response.body() != null ? response.body().getId() : 0);
 
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     } else {
+                        Log.d("ERROR", "Signup response failed. Response code: " + response.code());
 
-                        Toast.makeText(SignUpActivity.this, "Registration failed. Check input data : " +response.code(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this, "Registration failed. Check input data : " + response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+                    Log.d("ERROR", "Sighup crashed");
 
                     Toast.makeText(SignUpActivity.this, "Something crashed", Toast.LENGTH_SHORT).show();
-                    Logger.getLogger(SignUpActivity.class.getName()).log(Level.SEVERE, "Error to singUp. Server not response");
                 }
             });
 
@@ -117,8 +115,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    private Boolean validateUsername() {
-        String val = String.valueOf(regUsername.getText());
+    private Boolean validateUsername(String val) {
 
         if (val.isEmpty()) {
             regUsername.setError("Field cannot be empty");
@@ -132,8 +129,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    private Boolean validateEmail() {
-        String val = String.valueOf(regEmail.getText());
+    private Boolean validateEmail(String val) {
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
         if (val.isEmpty()) {
@@ -148,8 +144,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    private Boolean validatePassword() {
-        String val = String.valueOf(regPassword.getText());
+    private Boolean validatePassword(String val) {
         String passwordVal = "^" +
                 "(?=.*[a-zA-Z])" +      //any letter
                 "(?=.*[@#$%^&+=])" +    //at least 1 special character

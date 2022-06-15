@@ -33,8 +33,9 @@ public  class VariantAdapter extends RecyclerView.Adapter<VariantAdapter.Variant
 
     @Override
     public void onBindViewHolder(@NonNull VariantViewHolder holder, int position) {
-        holder.variantName.setText("Вариант "+ (position+1));
-        holder.mark.setText(list.get(position).getMark()+"/ 10");
+
+        holder.variantName.setText(list.get(position).getFullName());
+        holder.mark.setText(list.get(position).getMark()+"/ 20");
 
     }
 

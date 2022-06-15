@@ -71,7 +71,7 @@
 40-->/home/masha/Fastest/app/src/main/AndroidManifest.xml:30:13-37
 41        <activity
 41-->/home/masha/Fastest/app/src/main/AndroidManifest.xml:31:9-33:40
-42            android:name="com.fastastapp.TestDataActivity"
+42            android:name="com.fastastapp.VariantsActivity"
 42-->/home/masha/Fastest/app/src/main/AndroidManifest.xml:32:13-45
 43            android:exported="false" />
 43-->/home/masha/Fastest/app/src/main/AndroidManifest.xml:33:13-37

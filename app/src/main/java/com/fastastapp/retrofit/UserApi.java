@@ -1,8 +1,12 @@
 package com.fastastapp.retrofit;
 
+import com.fastastapp.model.Chars;
 import com.fastastapp.model.Test;
+import com.fastastapp.model.TestNameId;
 import com.fastastapp.model.User;
+import com.fastastapp.model.Variant;
 
+import java.io.InputStream;
 import java.util.List;
 
 import okhttp3.MultipartBody;
@@ -23,20 +27,47 @@ public interface UserApi {
     Call<User> addNewUser(@Body User user);
 
     @GET("/fastest/profile")
-    Call<User> logIn ();
+    Call<User> logIn();
 
     @GET("/fastest/profile/{idUser}/GetTests")
-    Call<List<Test>>getTests(@Path("idUser") int idUser);
+    Call<List<TestNameId>> getTests(@Path("idUser") int idUser);
 
 
-    //rewrite
     @Multipart
     @POST("/fastest/profile/{idUser}/GenerateTest")
-    Call<ResponseBody> uploadFiles(
-            @Part ("testName")String  testName,
+    Call<Test> uploadFiles(
+            @Part("testName") String testName,
             @Part MultipartBody.Part fileQuestions,
             @Part MultipartBody.Part fileStudents,
-            @Path ("idUser") int idUser
-            );
+            @Path("idUser") int idUser
+    );
+
+
+    @GET("/fastest/profile/{idUser}/Tests/{idTest}/V")
+    Call<List<Variant>> getVariantsOfTest(@Path(value = "idUser") int idUser,
+                                          @Path(value = "idTest") int idTest);
+
+
+    @GET("/fastest/profile/{idUser}/Variant/{idVariant}/T")
+    Call<List<Chars>> getAnswer(@Path(value = "idUser") int idUser,
+                                @Path(value = "idVariant") int idVariant);
+
+    @GET("/fastest/profile/{idUser}/Tests/{idTest}/Blanks")
+    Call<ResponseBody> getBlanks(@Path(value = "idUser") int idUser,
+                                 @Path(value = "idTest") int idTest);
+
+    @GET("/fastest/profile/{idUser}/Tests/{idTest}/Documents")
+    Call<ResponseBody> getVariants(@Path(value = "idUser") int idUser,
+                                   @Path(value = "idTest") int idTest);
+
+    @POST("/fastest/profile/{idUser}/Variant/{idVariant}")
+    Call<ResponseBody> setMarkToVariant(@Path(value = "idUser") int idUser,
+                                        @Path(value = "idVariant") int idVariant,
+                                        @Body int mark);
+
+
+    @GET("/fastest/profile/{idUser}/Tests/{idTest}/Results")
+    Call<ResponseBody> getResults(@Path(value = "idUser") int idUser,
+                            @Path(value = "idTest") int idTest);
 
 }

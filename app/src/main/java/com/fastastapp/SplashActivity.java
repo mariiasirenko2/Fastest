@@ -19,9 +19,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_SCREEN = 3000;
 
-    Animation topAnim, bottomAnim;
-    ImageView image;
-    TextView slogan;
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +31,11 @@ public class SplashActivity extends AppCompatActivity {
 
         //find logo image and slogan
         image = findViewById(R.id.logo_wight_image);
-        slogan = findViewById(R.id.slogan_text);
+        TextView slogan = findViewById(R.id.slogan_text);
 
         //init animation
-        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
-        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+        Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+        Animation bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
         //make animation on logo image and slogan
         image.setAnimation(topAnim);
@@ -46,13 +44,11 @@ public class SplashActivity extends AppCompatActivity {
         //make animation on switching activities
         new Handler().postDelayed(() -> {
 
-            Intent intent=new Intent(SplashActivity.this,LogInActivity.class);
+            Intent intent = new Intent(SplashActivity.this, LogInActivity.class);
 
-            ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this,new Pair<>(image, "logo_image"));
-            startActivity(intent,options.toBundle());
-        },SPLASH_SCREEN);
-
-
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this, new Pair<>(image, "logo_image"));
+            startActivity(intent, options.toBundle());
+        }, SPLASH_SCREEN);
 
 
     }

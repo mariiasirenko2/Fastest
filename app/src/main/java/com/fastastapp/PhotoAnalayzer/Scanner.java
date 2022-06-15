@@ -1,118 +1,128 @@
 package com.fastastapp.PhotoAnalayzer;
 
-import org.opencv.android.Utils;
-import org.opencv.core.*;
-import org.opencv.imgproc.Imgproc;
-import org.opencv.objdetect.QRCodeDetector;
-
-import java.util.*;
-
 import static org.opencv.core.CvType.CV_8UC1;
-import static org.opencv.imgproc.Imgproc.*;
-
-
-
+import static org.opencv.imgproc.Imgproc.CHAIN_APPROX_SIMPLE;
+import static org.opencv.imgproc.Imgproc.COLOR_RGB2GRAY;
+import static org.opencv.imgproc.Imgproc.Canny;
+import static org.opencv.imgproc.Imgproc.GaussianBlur;
+import static org.opencv.imgproc.Imgproc.RETR_EXTERNAL;
+import static org.opencv.imgproc.Imgproc.RETR_TREE;
+import static org.opencv.imgproc.Imgproc.THRESH_BINARY_INV;
+import static org.opencv.imgproc.Imgproc.THRESH_OTSU;
+import static org.opencv.imgproc.Imgproc.approxPolyDP;
+import static org.opencv.imgproc.Imgproc.arcLength;
+import static org.opencv.imgproc.Imgproc.boundingRect;
+import static org.opencv.imgproc.Imgproc.cvtColor;
 import static org.opencv.imgproc.Imgproc.drawContours;
+import static org.opencv.imgproc.Imgproc.findContours;
+import static org.opencv.imgproc.Imgproc.threshold;
 
 import android.graphics.Bitmap;
 
+import com.fastastapp.model.Chars;
+
+import org.opencv.android.Utils;
+import org.opencv.core.Core;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
+import org.opencv.core.MatOfPoint2f;
+import org.opencv.core.Point;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.objdetect.QRCodeDetector;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Scanner {
+    private final static int QUESTION_QUANTITY = 20;
+    private final static int QUANTITY_ANSWER_OPTIONS = 4;
+
     private final Mat source;
-    private final int questionCount;
 
-    private Rect roi;
-    private Mat  gray, hierarchy,cut,cutGray;
+    private Mat gray, hierarchy, cut, cutGray;
+
     private List<MatOfPoint> contours, bubbles, sortedBubbles;
-    private List<Integer> answers;
+
     private final QRCodeDetector qrCodeDetector;
-    Bitmap bitmap;
-    List<Answers> answer_key = Arrays.asList(
-            Answers.A, Answers.A, Answers.B, Answers.C, Answers.D,
-            Answers.D, Answers.A, Answers.A, Answers.B, Answers.B,
-            Answers.A, Answers.D, Answers.C, Answers.A, Answers.D,
-            Answers.C, Answers.C, Answers.D, Answers.A, Answers.A);
+    private Bitmap bitmap;
+    private int mark = 0;
 
 
-    private boolean logging = false;
+    private List<Chars> answer_key;
+    private List<Integer> answerFromPhoto;
 
-    public Scanner(Mat source, int questionCount) {
+
+    public Scanner(Mat source) {
         this.source = source;
-        this.questionCount = questionCount;
 
         this.qrCodeDetector = new QRCodeDetector();
-bitmap =null;
+        bitmap = null;
 
         hierarchy = new Mat();
         contours = new ArrayList<>();
         bubbles = new ArrayList<>();
         sortedBubbles = new ArrayList<>();
-        answers = new ArrayList<>();
+        answerFromPhoto = new ArrayList<>();
     }
-    public String detectQRCode( ){
+
+    public void addAnswers(List<Chars> answers) {
+        answer_key = new ArrayList<>();
+        answer_key.addAll(answers);
+    }
+
+    public int getMark() {
+        return mark;
+    }
+
+    public String detectQRCode() {
         return qrCodeDetector.detectAndDecode(source);
     }
 
-    public void setLogging(boolean logging) {
-        this.logging = logging;
-    }
 
-    public  void  filter(){
-        gray = new Mat(source.size(), CV_8UC1);
-        cvtColor(source, gray, COLOR_RGB2GRAY);
-    }
     public Bitmap scan() throws Exception {
 
-
-
-        //CV_8UC1 It is an 8-bit single-channel array that is primarily used to store and obtain the values of any image
         gray = new Mat(source.size(), CV_8UC1);
+
         cvtColor(source, gray, COLOR_RGB2GRAY);
-        if(logging) Util.writeToFile(gray, "step_1_gray.png");
-
         GaussianBlur(gray, gray, new Size(5, 5), 0);
-        if(logging) Util.writeToFile(gray, "step_2_blur.png");
-
         Canny(gray, gray, 75, 200);
-        if(logging) Util.writeToFile(gray, "step_3_canny.png");
 
-        cut =  findParentRectangle();
+        cut = findParentRectangle();
 
         cutGray = new Mat(source.size(), CV_8UC1);
+
         cvtColor(cut, cutGray, COLOR_RGB2GRAY);
-        if(logging) Util.writeToFile(cutGray, "step_4_cutGray.png");
-
-
         GaussianBlur(cutGray, cutGray, new Size(5, 5), 0);
-        if(logging) Util.writeToFile(cutGray, "step_5_cutBlur.png");
-
-
-        threshold(cutGray,cutGray,0,255, THRESH_BINARY_INV|THRESH_OTSU);
-        if(logging) Util.writeToFile(cutGray, "step_6_thresh.png");
-
-
+        threshold(cutGray, cutGray, 0, 255, THRESH_BINARY_INV | THRESH_OTSU);
 
         findBubbles();
 
-        recognizeAnswers();
+        checkBlank();
+
         return bitmap;
-
-
     }
+
     private Mat findParentRectangle() throws Exception {
 
         findContours(gray.clone(), contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
 
         // find rectangles
         HashMap<Double, MatOfPoint> rectangles = new HashMap<>();
-        for(int i = 0; i < contours.size(); i++){
-            MatOfPoint2f approxCurve = new MatOfPoint2f( contours.get(i).toArray() );
+        for (int i = 0; i < contours.size(); i++) {
+            MatOfPoint2f approxCurve = new MatOfPoint2f(contours.get(i).toArray());
             approxPolyDP(approxCurve, approxCurve, 0.02 * arcLength(approxCurve, true), true);
 
-            if(approxCurve.toArray().length == 4){
+            if (approxCurve.toArray().length == 4) {
                 rectangles.put((double) i, contours.get(i));
             }
         }
-
 
 
         int parentIndex = -1;
@@ -125,34 +135,30 @@ bitmap =null;
             double nextId = ids[0];
             double previousId = ids[1];
 
-            if(nextId != -1 && previousId != -1) continue;
+            if (nextId != -1 && previousId != -1) continue;
 
             int k = (int) index;
             int c = 0;
 
-            while(hierarchy.get(0, k)[2] != -1){
+            while (hierarchy.get(0, k)[2] != -1) {
                 k = (int) hierarchy.get(0, k)[2];
                 c++;
             }
 
-            if(hierarchy.get(0, k)[2] != -1) c++;
+            if (hierarchy.get(0, k)[2] != -1) c++;
 
-            if (c >= 3){
+            if (c >= 3) {
                 parentIndex = (int) index;
             }
 
         }
 
 
-
-
-        if(parentIndex < 0){
+        if (parentIndex < 0) {
             throw new Exception("Couldn't capture main wrapper");
         }
 
-        roi = boundingRect(contours.get(parentIndex));
-
-
+        Rect roi = boundingRect(contours.get(parentIndex));
 
         int padding = 30;
 
@@ -160,9 +166,6 @@ bitmap =null;
         roi.y += padding;
         roi.width -= 2 * padding;
         roi.height -= 2 * padding;
-
-
-        if(logging) Util.writeToFile(source.submat(roi), "step_7_roi.png");
 
         return source.submat(roi);
     }
@@ -176,116 +179,116 @@ bitmap =null;
         Rect tmp;
         hierarchy.release();
 
-        Mat cutCont;
-        cutCont = cut.clone();
-
-
         //Determining the contours of the bubble
-        for(int c = 0; c < contours.size(); c++)
-        {
+        for (int c = 0; c < contours.size(); c++) {
             tmp = Imgproc.boundingRect(contours.get(c));
-            double ar =tmp.width/(float)tmp.height;
+            double ar = tmp.width / (float) tmp.height;
 
-            if( tmp.width >= 20 && tmp.height>=20 && ar >= 0.9 && ar<=1.2 ){
+            if (tmp.width >= 20 && tmp.height >= 20 && ar >= 0.9 && ar <= 1.2) {
                 bubbles.add(contours.get(c));
-                Scalar color = new Scalar(0, 0, 255);
-                Imgproc.drawContours(cutCont, contours, c, color, 2,
-                        Imgproc.LINE_8, hierarchy, 2, new Point() ) ;
             }
         }
 
-        if(bubbles.size() != 20 * 4){
+        if (bubbles.size() != QUESTION_QUANTITY * QUANTITY_ANSWER_OPTIONS) {
             throw new Exception("Couldn't capture all bubbles.");
         }
 
 
-
         // order bubbles on coordinate system
+        Util.sortTopLeftToBottomRight(bubbles);
 
-        Util.sortTopLeft2BottomRight(bubbles);
-
-
-        for(int j = 0; j < bubbles.size(); j+=4*2){
-
-            List<MatOfPoint> row = bubbles.subList(j, j + 4*2);
-
-            Util.sortLeft2Right(row);
-
+        //order bubbles for each question
+        for (int j = 0; j < bubbles.size(); j += QUANTITY_ANSWER_OPTIONS * 2) {
+            List<MatOfPoint> row = bubbles.subList(j, j + QUANTITY_ANSWER_OPTIONS * 2);
+            Util.sortLeftToRight(row);
             sortedBubbles.addAll(row);
         }
     }
 
-    private void recognizeAnswers(){
-        List<Integer> tmp1 = new ArrayList<>();
+    private void checkBlank() {
+        List<Integer> checkAnswerHelper = new ArrayList<>();
 
-        List<Answers> helpAns = new ArrayList<>();
-        for(int i =0;i< answer_key.size()/2;i++){
-            helpAns.add(answer_key.get(i));
-            helpAns.add(answer_key.get(answer_key.size()/2+i));
+        //make array with answers of questions left to right
+        List<Chars> answersInLeftRightOrder = new ArrayList<>();
+        for (int i = 0; i < answer_key.size() / 2; i++) {
+            answersInLeftRightOrder.add(answer_key.get(i));
+            answersInLeftRightOrder.add(answer_key.get(answer_key.size() / 2 + i));
 
         }
 
-        for(int i = 0; i< sortedBubbles.size(); i+=4) {
-            int question =((i+1)/4+1);
+        //go though question
+        for (int i = 0; i < sortedBubbles.size(); i += QUANTITY_ANSWER_OPTIONS) {
+            //get question number
+            int question = ((i + 1) / QUANTITY_ANSWER_OPTIONS + 1);
 
-            List<MatOfPoint> rows = sortedBubbles.subList(i, i+4);
+            //get though bubble in question
+            List<MatOfPoint> rows = sortedBubbles.subList(i, i + QUANTITY_ANSWER_OPTIONS);
             for (int j = 0; j < rows.size(); j++) {
 
+                //make a mask to detect colored bubbles
                 MatOfPoint col = rows.get(j);
                 List<MatOfPoint> list = Collections.singletonList(col);
                 Mat mask = new Mat(cutGray.size(), CvType.CV_8UC1);
 
+                //use mask
                 drawContours(mask, list, -1, new Scalar(1, 1, 1), -1);
                 Mat conjunction = new Mat(cutGray.size(), CvType.CV_8UC1);
                 Core.bitwise_and(cutGray, mask, conjunction);
 
-
+                //get mask result
                 int countNonZero = Core.countNonZero(conjunction);
-                System.out.println(countNonZero);
+                Chars letter = Chars.valueOf(j + 1);
 
-                Answers letter = Answers.valueOf(j+1);
+                //first bubble has always detected as colored cause the imperfection
+                //of algorithm. This code helps to solve this problem
+                if (i == 0 && j == 0) countNonZero -= 9500;
 
-                if(i==0 &&j==0) countNonZero-=9500;
-                if(countNonZero >600 ){
-                    tmp1.add(letter.ordinal());
-                    if(helpAns.get(question-1).equals(letter)){
+                //check is the bubble marked
+                if (countNonZero > 600) {
+                    checkAnswerHelper.add(letter.ordinal());
+
+                    //check if the colored bubble is right answer
+                    if (answersInLeftRightOrder.get(question - 1).equals(letter)) {
+                        //draw the GREEN contour
                         Imgproc.drawContours(cut, sortedBubbles, i + j, new Scalar(0, 255, 0), 2,
                                 Imgproc.LINE_8, hierarchy, 2, new Point());
-                    }else {
-                        Imgproc.drawContours(cut, sortedBubbles, i +helpAns.get(question-1).ordinal()-1 , new Scalar(255, 0, 255), 2,
+                        //count as right answer
+                        mark++;
+                    } else {
+                        //draw the RED contour on right answer
+                        Imgproc.drawContours(cut, sortedBubbles, i + answersInLeftRightOrder.get(question - 1).ordinal() - 1, new Scalar(255, 0, 255), 2,
                                 Imgproc.LINE_8, hierarchy, 2, new Point());
                     }
                     break;
-
                 }
 
             }
-
-            if(tmp1.size() != question) {
-                tmp1.add(Answers.EMPTY.ordinal());
-                Imgproc.drawContours(cut, sortedBubbles, i +helpAns.get(question-1).ordinal()-1 , new Scalar(0, 0, 255), 2,
+            if (checkAnswerHelper.size() != question) {
+                checkAnswerHelper.add(Chars.EMPTY.ordinal());
+                //current question dont have colored bubbles
+                //mark right answer with BLUE
+                Imgproc.drawContours(cut, sortedBubbles, i + answersInLeftRightOrder.get(question - 1).ordinal() - 1, new Scalar(0, 0, 255), 2,
                         Imgproc.LINE_8, hierarchy, 2, new Point());
 
             }
 
-            }
-
-        List<Integer> odds = new ArrayList<>();
-        List<Integer> evens = new ArrayList<>();
-        for(int i = 0; i < answers.size(); i++){
-            if(i % 2 == 0) odds.add(answers.get(i));
-            if(i % 2 == 1) evens.add(answers.get(i));
         }
 
-        answers.clear();
-        answers.addAll(odds);
-        answers.addAll(evens);
+        //save answers in right order
+        List<Integer> odds = new ArrayList<>();
+        List<Integer> evens = new ArrayList<>();
+        for (int i = 0; i < answerFromPhoto.size(); i++) {
+            if (i % 2 == 0) odds.add(answerFromPhoto.get(i));
+            if (i % 2 == 1) evens.add(answerFromPhoto.get(i));
+        }
+
+        answerFromPhoto.clear();
+        answerFromPhoto.addAll(odds);
+        answerFromPhoto.addAll(evens);
+
+        //make a bitmap from processed Mat cut (added contours)
         bitmap = Bitmap.createBitmap(cut.cols(), cut.rows(), Bitmap.Config.ARGB_8888);
-      //  Util.writeToFile(cut, "result.jpg");
-        Utils.matToBitmap(cut,bitmap);
+        Utils.matToBitmap(cut, bitmap);
     }
-
-
-
 
 }

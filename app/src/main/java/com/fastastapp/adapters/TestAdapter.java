@@ -1,7 +1,6 @@
 package com.fastastapp.adapters;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +11,21 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fastastapp.R;
-import com.fastastapp.TestDataActivity;
-import com.fastastapp.model.Test;
+import com.fastastapp.VariantsActivity;
+import com.fastastapp.model.TestNameId;
 
 import java.util.ArrayList;
 
 public  class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolder> {
 
-    private final ArrayList<Test> tests;
+    private final ArrayList<TestNameId> tests;
+    private final String token;
+    private final int idUser;
 
-    public TestAdapter(ArrayList<Test> tests) {
+    public TestAdapter(ArrayList<TestNameId> tests, String token, int idUser) {
         this.tests = tests;
+        this.token =token;
+        this.idUser =idUser;
     }
 
     @NonNull
@@ -39,19 +42,18 @@ public  class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolde
     @Override
     public void onBindViewHolder(@NonNull TestViewHolder testViewHolder, int position) {
         // get specific element from list by it position in view
-        final Test tmp = tests.get(position);
 
-        if(tmp.getName()=="")tmp.setName("Test "+ (position+1));
-
-
-        testViewHolder.text.setText(tmp.getName());
+        testViewHolder.text.setText(tests.get(position).getName());
 
         testViewHolder.item_card.setOnClickListener(view -> {
 
-            Intent intent = new Intent(view.getContext(), TestDataActivity.class);
+            //redirect to variant details
+            Intent intent = new Intent(view.getContext(), VariantsActivity.class);
+            intent.putExtra("idTest", tests.get(position).getId());
+            intent.putExtra("token", token);
+            intent.putExtra("idUser", idUser);
+            intent.putExtra("testName", tests.get(position).getName());
 
-            //send by intent data about test name
-            intent.putExtra("text",tmp.getName());
 
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             view.getContext().startActivity(intent);
@@ -73,8 +75,7 @@ public  class TestAdapter extends RecyclerView.Adapter<TestAdapter.TestViewHolde
             super(itemView);
 
             //find list element
-            item_card =(CardView) itemView.findViewById(R.id.card);
-
+            item_card = itemView.findViewById(R.id.card);
             text = itemView.findViewById(R.id.text_test_name);
         }
     }

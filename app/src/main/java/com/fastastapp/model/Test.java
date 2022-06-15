@@ -6,28 +6,25 @@ public class Test {
 
 
     private int id;
-    private String name;
+    private String testName;
     private String[] students;
-    private Collection<Question> questions;
     private User owner;
+    private Collection<Question> questions;
 
-    public Test(String name) {
-        this.name = name;
+    public Test(String testName, User owner) {
+        this.testName = testName;
+        this.owner = owner;
     }
-
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
-        return name;
+        return testName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.testName = name;
     }
 }

@@ -2,6 +2,7 @@ package com.fastastapp.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.fastastapp.AddNewTest;
 import com.fastastapp.R;
 import com.fastastapp.adapters.TestAdapter;
-import com.fastastapp.model.Test;
+import com.fastastapp.model.TestNameId;
 import com.fastastapp.retrofit.ServiceGenerator;
 import com.fastastapp.retrofit.UserApi;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,25 +28,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TestFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class TestFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "authToken";
     private static final String ARG_PARAM2 = "userId";
 
-    // TODO: Rename and change types of parameters
     private String token;
     private int userId;
     private RecyclerView recyclerView;
-    private FloatingActionButton floatingActionButton;
+
     public TestFragment() {
-        // Required empty public constructor
     }
 
 
@@ -74,7 +68,7 @@ public class TestFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_test, container, false);
 
 
-        floatingActionButton = view.findViewById(R.id.fab);
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.fab);
         recyclerView = view.findViewById(R.id.recview);
 
         floatingActionButton.setOnClickListener(view1 -> {
@@ -92,37 +86,36 @@ public class TestFragment extends Fragment {
         UserApi userApi =
                 ServiceGenerator.createService(UserApi.class, token);
 
-        ArrayList<Test> tests = new ArrayList<>();
-        //tests.add(new Test("Test test"));
+        ArrayList<TestNameId> tests = new ArrayList<>();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        userApi.getTests(userId).enqueue(new Callback<List<Test>>() {
+        userApi.getTests(userId).enqueue(new Callback<List<TestNameId>>() {
             @Override
-            public void onResponse(@NonNull Call<List<Test>> call, @NonNull Response<List<Test>> response) {
+            public void onResponse(@NonNull Call<List<TestNameId>> call, @NonNull Response<List<TestNameId>> response) {
                 if(response.isSuccessful()) {
+                    Log.d("SUCCESS", "Successful Test Load ");
 
-                    assert response.body() != null;
-                    tests.addAll(response.body());
-                   // Toast.makeText(getActivity(),"tests quantity: "+ tests.size(), Toast.LENGTH_SHORT).show();
-                    recyclerView.setAdapter(new TestAdapter(tests));
+                    tests.addAll(response.body() != null ? response.body() : null);
 
+                    recyclerView.setAdapter(new TestAdapter(tests,token,userId));
 
                 }
                 else{
-                    Toast.makeText(getActivity(), "Test download failed"+ response.code()+" : id="+userId, Toast.LENGTH_SHORT).show();
+                    Log.d("ERROR", "Test Load response failed. Response code: " + response.code());
+
+                    Toast.makeText(getActivity(), "Test download failed", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
-            public void onFailure(@NonNull Call<List<Test>> call, @NonNull Throwable t) {
-                Toast.makeText(getActivity(),"Something crashed --", Toast.LENGTH_SHORT).show();
+            public void onFailure(@NonNull Call<List<TestNameId>> call, @NonNull Throwable t) {
+                Log.d("ERROR", "Test Load crashed");
+
+                Toast.makeText(getActivity(),"Crashed ", Toast.LENGTH_SHORT).show();
             }
         });
 
-
-
-
-
+        
         return  view;
     }
 

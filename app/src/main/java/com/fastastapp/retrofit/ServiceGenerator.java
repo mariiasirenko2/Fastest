@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.fastastapp.SignUpActivity;
 import com.google.gson.Gson;
 
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,12 +23,12 @@ public class ServiceGenerator {
     private static final String BASE_URL = "http://192.168.88.182:8080";//http://your_IP:tomcat_port  ex: http://111.111.11.11:8080
 
     private static final OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+
     private static final Retrofit.Builder builder =
             new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create(new Gson()));
     private static Retrofit retrofit = builder.build();
-
 
 
     public static <S> S createService(Class<S> serviceClass) {
@@ -39,7 +40,7 @@ public class ServiceGenerator {
         if (!TextUtils.isEmpty(username)
                 && !TextUtils.isEmpty(password)) {
             String authToken = Credentials.basic(username, password);
-            Log.i("INFO -------------"," Token: "+ authToken);
+            Log.i("INFO -------------", " Token: " + authToken);
             return createService(serviceClass, authToken);
         }
 

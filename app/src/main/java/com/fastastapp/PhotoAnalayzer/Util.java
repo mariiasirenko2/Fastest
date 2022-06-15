@@ -12,24 +12,11 @@ import static org.opencv.imgcodecs.Imgcodecs.imwrite;
 
 
 public class Util {
-    public static String SOURCE_FOLDER = "";
-    public static String TARGET_FOLDER = "/home/masha/Pictures/";
-
-    public static String getSource(String name){
-        return SOURCE_FOLDER + name;
-    }
-
-    public static String getOutput(String name){
-        return TARGET_FOLDER + name;
-    }
-
-    public static void writeToFile(Mat source, String name){
-        imwrite(getOutput(name), source);
-    }
 
 
 
-    public static void sortTopLeft2BottomRight(List<MatOfPoint> points){
+
+    public static void sortTopLeftToBottomRight(List<MatOfPoint> points){
         // top-left to right-bottom sort
         Collections.sort(points, (e1, e2) -> {
 
@@ -40,7 +27,7 @@ public class Util {
         });
     }
 
-    public static void sortLeft2Right(List<MatOfPoint> points){
+    public static void sortLeftToRight(List<MatOfPoint> points){
         // left to right sort
         Collections.sort(points, (e1, e2) -> {
 

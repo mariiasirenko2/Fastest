@@ -1,12 +1,15 @@
 package com.fastastapp.model;
 
+import java.util.Set;
+
 public class Variant {
      private  int id;
-     private String fullName;
+     private String studentName;
      private int mark;
+    private Set<VariantQuestion> variantQuestions;
 
     public Variant(String fullName, int mark) {
-        this.fullName = fullName;
+        this.studentName = fullName;
         this.mark = mark;
     }
 
@@ -14,16 +17,17 @@ public class Variant {
         return id;
     }
 
+
     public void setId(int id) {
         this.id = id;
     }
 
     public String getFullName() {
-        return fullName;
+        return studentName;
     }
 
     public void setFullName(String fullName) {
-        this.fullName = fullName;
+        this.studentName = fullName;
     }
 
     public int getMark() {

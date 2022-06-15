@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/buttonSemiLightBlue"
-    tools:context=".TestDataActivity">
+    tools:context=".VariantsActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -96,13 +96,13 @@
             android:id="@+id/download_results"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:textSize="10dp"
-            android:layout_marginRight="10dp"
-            android:text="Скачать результаты"
             android:layout_below="@id/download_tasks"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
             android:layout_toRightOf="@id/test_photo"
-            android:background="@color/buttonBlue" />
+            android:background="@color/buttonBlue"
+            android:text="Скачать результаты"
+            android:textSize="10dp" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,24 +1,19 @@
 package com.fastastapp.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.fastastapp.R;
-import com.fastastapp.SignUpActivity;
 import com.fastastapp.model.User;
 import com.fastastapp.retrofit.ServiceGenerator;
 import com.fastastapp.retrofit.UserApi;
-
-import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,20 +23,17 @@ import retrofit2.Response;
 public class AccountFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "authToken";
-    private static final String ARG_PARAM2 = "param2";
 
     private String token;
-    private String mParam2;
 
     public AccountFragment() {
     }
 
 
-    public static AccountFragment newInstance(String param1, String param2) {
+    public static AccountFragment newInstance(String param1) {
         AccountFragment fragment = new AccountFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,7 +43,6 @@ public class AccountFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             token = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -70,21 +61,18 @@ public class AccountFragment extends Fragment {
 
         loginService.logIn().enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
                 if (response.isSuccessful()) {
-                   // Toast.makeText(getActivity(), "Login Successful (Account Fragment)", Toast.LENGTH_SHORT).show();
 
                     //set data
-                    username.setText(response.body().getUsername());
+                    username.setText(response.body() != null ? response.body().getUsername() : null);
                     email.setText(response.body().getEmail());
-                } else {
-                    Toast.makeText(getActivity(), "Failed. Check input data", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(getActivity(), "Something crashed 1", Toast.LENGTH_SHORT).show();
+            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+                Toast.makeText(getActivity(), "Something crashed", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -160,7 +160,7 @@ ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:28:9-30:40
 		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:30:13-37
 	android:name
 		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:29:13-43
-activity#com.fastastapp.TestDataActivity
+activity#com.fastastapp.VariantsActivity
 ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:31:9-33:40
 	android:exported
 		ADDED from /home/masha/Fastest/app/src/main/AndroidManifest.xml:33:13-37

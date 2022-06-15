@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:padding="8dp">
 
     <androidx.cardview.widget.CardView
@@ -16,7 +15,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="45dp"
             android:background="@color/lightGrey"
             android:layout_margin="5dp">
 
@@ -27,11 +26,12 @@
                 android:text="Variant"
                 android:textSize="15dp"
                 android:textColor="@color/buttonBlue"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="12dp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/variant_name"
                 android:layout_toLeftOf="@id/mark_text"
                 android:layout_marginRight="15dp"
                 android:text="Оценка"
@@ -43,6 +43,7 @@
                 android:id="@+id/mark_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/variant_name"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="15dp"
                 android:text=" 0 / 10"
