@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_splash.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_test_data.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_test_data.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_test.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/fragment_test.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_camera.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_camera.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/test_frame.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/test_frame.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_result.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_result.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_login.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_account.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/fragment_account.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/variant_card.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/variant_card.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_add_new_test.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_add_new_test.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_home_page.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_home_page.xml"
+    },
+    {
+        "merged": "/home/masha/Fastest/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_sing_up.xml",
+        "source": "/home/masha/Fastest/app/src/main/res/layout/activity_sing_up.xml"
+    }
+]

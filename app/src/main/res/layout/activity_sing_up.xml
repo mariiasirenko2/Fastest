@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="20dp"
+    android:gravity="center_horizontal"
+    >
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:transitionName="logo_image"
+        android:src="@drawable/big_logo_light"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/buttonSemiLightBlue"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up_to_start_easy_testing"
+        android:textSize="15sp"
+        android:textColor="@color/buttonSemiLightBlue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            app:boxStrokeErrorColor="@color/attentionRed"
+            app:boxStrokeColor="@color/buttonBlue"
+            android:textColorHint="@color/buttonSemiLightBlue"
+            app:hintTextColor="@color/buttonSemiLightBlue"
+            app:counterEnabled="true"
+            app:counterTextColor="@color/buttonSemiLightBlue"
+            app:counterMaxLength="20"
+            app:errorEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_username_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/buttonBlue"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
+            app:boxStrokeErrorColor="@color/attentionRed"
+            app:boxStrokeColor="@color/buttonBlue"
+            android:textColorHint="@color/buttonSemiLightBlue"
+            app:hintTextColor="@color/buttonSemiLightBlue"
+            app:errorEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_email_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/buttonBlue"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            app:boxStrokeErrorColor="@color/attentionRed"
+            app:boxStrokeColor="@color/buttonBlue"
+            android:textColorHint="@color/buttonSemiLightBlue"
+            app:hintTextColor="@color/buttonSemiLightBlue"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/buttonSemiLightBlue"
+            app:errorEnabled="true"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_password_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/buttonBlue"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/registration_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Go"
+        android:backgroundTint="@color/buttonBlue"/>
+
+    <Button
+        android:id="@+id/go_login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/go_to_login"
+        android:textColor="@color/buttonSemiLightBlue"
+        android:background="#00000000"
+        android:elevation="0dp"
+        android:layout_margin="15dp"/>
+
+
+</LinearLayout>
